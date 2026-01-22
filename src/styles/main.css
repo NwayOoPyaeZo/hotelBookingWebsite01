@@ -1,0 +1,8 @@
+/* Main stylesheet for the hotel booking website. Add your Tailwind directives and custom styles here. */
+@import "tailwindcss";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
