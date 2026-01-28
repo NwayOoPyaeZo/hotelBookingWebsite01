@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PropertyTypeBar from "../components/propertyTypeBar";
+import SearchBoxPrototype from "../components/searchBoxPrototype";
 import heroPic01 from "../assets/images/heroBanner/heroPic01.jpg";
 import heroPic02 from "../assets/images/heroBanner/heroPic02.jpg";
 import heroPic03 from "../assets/images/heroBanner/heroPic03.jpg";
@@ -41,7 +42,7 @@ const MainHeaderSection = () => {
         <div className="absolute inset-0 bg-[#00349959]" />
 
         {/* Title */}
-        <div className="absolute top-[300px] lg:top-[250px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3 lg:gap-4 w-[90%] max-w-[615px] text-white text-center z-10 px-4">
+        <div className="absolute top-[300px] lg:top-[320px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3 lg:gap-4 w-[90%] max-w-[615px] text-white text-center z-10 px-4">
           <h1 className="font-semibold text-[28px] sm:text-[34px] lg:text-[40px] leading-tight lg:leading-[52px]">
             Your Trip Starts Here
           </h1>
@@ -49,16 +50,16 @@ const MainHeaderSection = () => {
             Find unique stays across hotels, villas, and more.
           </p>
         </div>
-
-        {/* Property type bar */}
-        <PropertyTypeBar
-          active={activeType}
-          onChange={setActiveType}
-        />
-
-        
       </div>
 
+      {/* Property type bar */}
+      <PropertyTypeBar
+        active={activeType}
+        onChange={setActiveType}
+      />
+
+      {/* Search box */}
+      <SearchBoxPrototype />
 
     </section>
   );
