@@ -3,7 +3,7 @@ import LanguageCurrency from "../components/LanguageCurrency";
 
 const Navbar = () => {
     return (
-        <section className="w-full min-h-[96px] flex items-center justify-center bg-amber-100 relative z-100">
+        <section className="w-full min-h-[96px] flex items-center justify-center bg-white relative z-100">
             <nav className="w-full max-w-[1232px] h-[48px] flex items-center justify-between px-6 mx-auto">
                 {/* Logo */}
                 <a href="/" className="relative left-5 lg:left-0 flex items-center">

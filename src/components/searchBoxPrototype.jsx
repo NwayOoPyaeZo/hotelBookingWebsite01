@@ -64,7 +64,6 @@ export default function SearchBoxPrototype() {
     );
 
     // NEW CLEAN COUNTER (FOR MOBILE)
-    // We need a separate one because your original one has 'relative right-10' which breaks mobile layout
     const MobileCounter = ({ value, setValue, min = 0 }) => (
         <div className="flex items-center gap-4">
             <button
@@ -88,14 +87,16 @@ export default function SearchBoxPrototype() {
 
     return (
         <>
-            {/* DESKTOP VERSION  */}
-
+            {/* ===========================================================================
+                DESKTOP VERSION
+               =========================================================================== */}
             <div className="hidden lg:block">
-                <section className="lg:absolute left-1/2 -translate-x-1/2 lg:top-[520px] lg:w-[1146px]">
-                    <div className="flex items-center gap-4 h-[154px] bg-white rounded-3xl shadow-[0_2px_20px_rgba(0,0,0,0.15)] px-6">
+                <section className="lg:absolute left-1/2 -translate-x-1/2 lg:top-[520px] lg:w-[1146px] z-50">
+                    <div className="flex items-center gap-4 h-[154px] bg-white rounded-3xl shadow-[0_2px_20px_rgba(0,0,0,0.15)] px-6 relative z-10">
 
-                        {/* Location */}
-                        <div className="relative lg:left-2 flex flex-col justify-center gap-1 w-[280px] h-[72px] px-4 rounded-xl hover:bg-[#E8EFFC]">
+                        {/* Location Section */}
+                        {/* Added dynamic z-50 here so the dropdown floats above the Dates section */}
+                        <div className={`relative lg:left-2 flex flex-col justify-center gap-1 w-[280px] h-[72px] px-4 rounded-xl hover:bg-[#E8EFFC] ${isLocationOpen ? 'z-50' : 'z-auto'}`}>
                             <span className="relative lg:left-8 text-[18px] font-medium text-[#2B3037]">Location</span>
                             <input
                                 value={location}
@@ -106,7 +107,7 @@ export default function SearchBoxPrototype() {
                             />
                             {/* Location dropdown */}
                             {isLocationOpen && (
-                                <div className="relative lg:top-10 mt-2 w-[360px] bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] p-4 z-50">
+                                <div className="absolute top-[80px] left-0 w-[360px] bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] p-4 z-[100]">
                                     {/* Recent Searches */}
                                     <div className="mb-4">
                                         <p className="text-[14px] font-medium text-[#2B3037] mb-2">
@@ -154,8 +155,8 @@ export default function SearchBoxPrototype() {
 
                         <div className="w-px h-10 bg-[#DDDFE3]" />
 
-                        {/* Dates */}
-                        <div className="flex items-center w-[273px] h-[74px] bg-white rounded-xl">
+                        {/* Dates Section */}
+                        <div className="flex items-center w-[273px] h-[74px] bg-white rounded-xl relative z-10">
                             {/* Check in */}
                             <div className="flex flex-col items-center justify-center px-4 w-[130px] h-[72px] rounded-xl hover:bg-[#E8EFFC]">
                                 <span className="text-[18px] font-medium text-[#2B3037]">Check in</span>
@@ -173,10 +174,11 @@ export default function SearchBoxPrototype() {
 
                         <div className="w-px h-10 bg-[#DDDFE3]" />
 
-                        {/* Rooms & Guests */}
+                        {/* Rooms & Guests Section */}
+                        {/* Added dynamic z-50 here so the dropdown floats above the Search Button */}
                         <div
                             onClick={() => setIsGuestOpen(true)}
-                            className="relative flex flex-col justify-center gap-1 w-[360px] h-[72px] px-4 rounded-xl hover:bg-[#E8EFFC] cursor-pointer"
+                            className={`relative flex flex-col justify-center gap-1 w-[360px] h-[72px] px-4 rounded-xl hover:bg-[#E8EFFC] cursor-pointer ${isGuestOpen ? 'z-50' : 'z-auto'}`}
                         >
                             <span className="relative lg:left-8 text-[18px] font-medium">Rooms and Guests</span>
                             <div className="relative lg:left-8 flex items-center justify-between text-[16px]">
@@ -205,7 +207,7 @@ export default function SearchBoxPrototype() {
                             {/* Guest dropdown */}
                             {isGuestOpen && (
                                 <div
-                                    className="absolute flex flex-col lg:top-[120px] lg:w-[360px] h-[350px] bg-white rounded-3xl shadow-[0_12px_32px_rgba(0,0,0,0.18)] z-50 overflow-y-auto p-4"
+                                    className="absolute flex flex-col lg:top-[80px] left-0 lg:w-[360px] h-[350px] bg-white rounded-3xl shadow-[0_12px_32px_rgba(0,0,0,0.18)] z-[100] overflow-y-auto p-4"
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     <div className="w-full lg:h-[50px] flex justify-end ">
@@ -277,7 +279,7 @@ export default function SearchBoxPrototype() {
                         {/* Search Button */}
                         <button
                             onClick={handleSearch}
-                            className="relative lg:right-1 lg:w-[135px] h-[56px] px-10 bg-[#0057FF] rounded-xl text-white text-[20px] font-medium hover:opacity-90 hover:bg-[#013fba]"
+                            className="relative lg:right-1 lg:w-[135px] h-[56px] px-10 bg-[#0057FF] rounded-xl text-white text-[20px] font-medium hover:opacity-90 hover:bg-[#013fba] z-10"
                         >
                             Search
                         </button>
@@ -286,10 +288,11 @@ export default function SearchBoxPrototype() {
             </div>
 
 
-            {/* MOBILE VERSION  */}
+            {/* ===========================================================================
+                MOBILE VERSION
+               =========================================================================== */}
 
-
-            {/* 1. The Mobile Trigger (Pill Shape) */}
+            {/* 1. The Mobile Trigger */}
             <div className={`lg:hidden px-4 py-4 w-full ${isMobileSearchOpen ? 'hidden' : 'block'}`}>
                 <div
                     onClick={() => setIsMobileSearchOpen(true)}
@@ -306,7 +309,7 @@ export default function SearchBoxPrototype() {
 
             {/* 2. The Mobile Full-Screen Modal */}
             {isMobileSearchOpen && (
-                <div className="lg:hidden fixed inset-0 bg-[#F7F7F9] z-[100] flex flex-col">
+                <div className="lg:hidden h-full fixed inset-0 bg-[#F7F7F9] z-[100] flex flex-col">
 
                     {/* Modal Header */}
                     <div className="px-4 py-4 flex items-center justify-between bg-white border-b border-gray-100">
@@ -323,7 +326,7 @@ export default function SearchBoxPrototype() {
                     <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
 
                         {/* --- Card 1: Where --- */}
-                        <div className={`bg-white rounded-2xl p-5 shadow-sm transition-all duration-300 ${mobileStep === 0 ? 'ring-2 ring-black' : ''}`}>
+                        <div className={`bg-white rounded-2xl p-5 shadow-sm transition-all duration-300 ${mobileStep === 0 ? 'ring-2 ring-black z-50' : 'z-auto'}`}>
                             <div className="flex justify-between items-center" onClick={() => setMobileStep(0)}>
                                 <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Where to?</span>
                                 {mobileStep !== 0 && location && <span className="font-medium text-sm text-gray-800">{location}</span>}
@@ -361,7 +364,7 @@ export default function SearchBoxPrototype() {
                         </div>
 
                         {/* --- Card 2: When --- */}
-                        <div className={`bg-white rounded-2xl p-5 shadow-sm transition-all duration-300 ${mobileStep === 1 ? 'ring-2 ring-black' : ''}`}>
+                        <div className={`bg-white rounded-2xl p-5 shadow-sm transition-all duration-300 ${mobileStep === 1 ? 'ring-2 ring-black z-50' : 'z-auto'}`}>
                             <div className="flex justify-between items-center" onClick={() => setMobileStep(1)}>
                                 <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">When</span>
                                 {mobileStep !== 1 && <span className="font-medium text-sm text-gray-800">{checkIn ? "Dates selected" : "Add dates"}</span>}
@@ -386,7 +389,7 @@ export default function SearchBoxPrototype() {
                         </div>
 
                         {/* --- Card 3: Who --- */}
-                        <div className={`bg-white rounded-2xl p-5 shadow-sm transition-all duration-300 ${mobileStep === 2 ? 'ring-2 ring-black' : ''}`}>
+                        <div className={`bg-white rounded-2xl p-5 shadow-sm transition-all duration-300 ${mobileStep === 2 ? 'ring-2 ring-black z-50' : 'z-auto'}`}>
                             <div className="flex justify-between items-center" onClick={() => setMobileStep(2)}>
                                 <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Who</span>
                                 {mobileStep !== 2 && <span className="font-medium text-sm text-gray-800">{(adults + children) > 0 ? `${adults + children} guests` : "Add guests"}</span>}

@@ -1,22 +1,24 @@
-import { useState } from 'react'
 import Navbar from './layout/navbar';
 import MainHeaderSection from './sections/mainHeaderSection';
+import WhyTriptoSection from './sections/whyTriptoSection';
+import TrendingDestinations from './sections/trendingDestination';
 
 function App() {
 
   return (
-    <div>
+    <>
     <header>
       <Navbar />
       <MainHeaderSection />
     </header>
     <main>
-      {/* main content */}
+      <WhyTriptoSection />
+      <TrendingDestinations />
     </main>
     <footer>
       {/* footer content */}
     </footer>
-    </div>
+    </>
   )
 }
 
