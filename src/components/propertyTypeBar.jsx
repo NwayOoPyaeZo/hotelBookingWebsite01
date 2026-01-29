@@ -12,7 +12,7 @@ const PROPERTY_TYPES = [
 
 const PropertyTypeBar = ({ active = "hotel", onChange }) => {
   return (
-    <div className="mx-auto z-20 w-full flex justify-center mt-8 absolute top-[620px] lg:top-[480px] lg:left-1/2 lg:-translate-x-1/2 z-20">
+    <div className="mx-auto z-20 w-full flex justify-center mt-8 absolute top-[620px] lg:top-[480px] lg:left-1/2 lg:-translate-x-1/2 z-70">
       {/* Glass pill */}
       <div className="w-full lg:w-[812px] h-[72px] bg-black/30 backdrop-blur-[21.8px] rounded-[32px] flex items-center justify-center">
         {/* Button row */}
