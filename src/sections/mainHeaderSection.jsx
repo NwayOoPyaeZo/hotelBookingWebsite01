@@ -30,7 +30,7 @@ const MainHeaderSection = () => {
 
 
   return (
-    <section className="w-full bg-amber-300">
+    <section className="w-full h-150 lg:h-auto bg-amber-300">
       <div className="relative -top-[96px] w-full h-[607px] overflow-hidden rounded-b-[32px]">
         {/* Image */}
         <img
