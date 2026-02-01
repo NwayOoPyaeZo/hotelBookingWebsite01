@@ -4,6 +4,7 @@ import WhyTriptoSection from './sections/whyTriptoSection';
 import TrendingDestinations from './sections/trendingDestination';
 import WeekendDeals from './layout/WeekendDeal';
 import TravelMoreSpendLessSection from './sections/travelMoreSpendLessSection';
+import TopSightsSection from './sections/topSightsSection';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <TrendingDestinations />
       <WeekendDeals />
       <TravelMoreSpendLessSection />
+      <TopSightsSection />
     </main>
     <footer>
       {/* footer content */}

@@ -28,7 +28,7 @@ export const getLocales = async () => {
     BASE_LOCALES.map(async (loc) => {
       try {
         const res = await fetch(
-          `https://restcountries.com/v3.1/alpha/${loc.countryCode}?fields=flags`
+          `https://restcountries.com/v3.1/alpha/${loc.countryCode}?fields=flags`,
         );
         const data = await res.json();
         return {
@@ -41,7 +41,7 @@ export const getLocales = async () => {
           flag: "",
         };
       }
-    })
+    }),
   );
 
   cachedLocales = locales;
@@ -57,4 +57,17 @@ export const getLocale = async () => {
 
   localStorage.setItem("locale", JSON.stringify(defaultLocale));
   return defaultLocale;
+};
+
+export const getCountryFlag = async (countryCode) => {
+  try {
+    const res = await fetch(
+      `https://restcountries.com/v3.1/alpha/${countryCode}?fields=flags`,
+    );
+    const data = await res.json();
+    return data?.flags?.svg || "";
+  } catch (e) {
+    console.error(`Error fetching flag for ${countryCode}:`, e);
+    return "";
+  }
 };
