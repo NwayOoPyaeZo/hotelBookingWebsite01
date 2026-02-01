@@ -8,7 +8,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <a href="/" className="relative left-5 lg:left-0 flex items-center">
                     <img
-                        src="/src/assets/elements/Logo.svg"
+                        src="/assets/elements/Logo.svg"
                         alt="Hotel Booking Logo"
                         className="h-8"
                     />
@@ -37,7 +37,7 @@ const Navbar = () => {
                         className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border border-gray-200 hover:ring-2 hover:ring-[#0057FF] transition"
                     >
                         <img
-                            src="/src/assets/images/user.jpg"
+                            src="/assets/images/user.jpg"
                             alt="User profile"
                             className="w-full h-full object-cover"
                         />
