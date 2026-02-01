@@ -2,6 +2,7 @@ import Navbar from './layout/navbar';
 import MainHeaderSection from './sections/mainHeaderSection';
 import WhyTriptoSection from './sections/whyTriptoSection';
 import TrendingDestinations from './sections/trendingDestination';
+import WeekendDeals from './layout/WeekendDeal';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
     <main>
       <WhyTriptoSection />
       <TrendingDestinations />
+      <WeekendDeals />
     </main>
     <footer>
       {/* footer content */}

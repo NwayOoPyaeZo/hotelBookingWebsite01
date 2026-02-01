@@ -95,7 +95,7 @@ export default function SearchBoxPrototype() {
                     <div className="flex items-center gap-4 h-[154px] bg-white rounded-3xl shadow-[0_2px_20px_rgba(0,0,0,0.15)] px-6 relative z-10">
 
                         {/* Location Section */}
-                        {/* Added dynamic z-50 here so the dropdown floats above the Dates section */}
+                       
                         <div className={`relative lg:left-2 flex flex-col justify-center gap-1 w-[280px] h-[72px] px-4 rounded-xl hover:bg-[#E8EFFC] ${isLocationOpen ? 'z-50' : 'z-auto'}`}>
                             <span className="relative lg:left-8 text-[18px] font-medium text-[#2B3037]">Location</span>
                             <input
@@ -175,7 +175,7 @@ export default function SearchBoxPrototype() {
                         <div className="w-px h-10 bg-[#DDDFE3]" />
 
                         {/* Rooms & Guests Section */}
-                        {/* Added dynamic z-50 here so the dropdown floats above the Search Button */}
+    
                         <div
                             onClick={() => setIsGuestOpen(true)}
                             className={`relative flex flex-col justify-center gap-1 w-[360px] h-[72px] px-4 rounded-xl hover:bg-[#E8EFFC] cursor-pointer ${isGuestOpen ? 'z-50' : 'z-auto'}`}
