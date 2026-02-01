@@ -35,10 +35,10 @@ const WhyTriptoSection = () => {
                         </div>
                         <div className="w-full h-[92px] flex flex-col justify-center items-center mt-auto">
                             <h3 className="w-full text-center font-['Roboto'] font-semibold text-[#383E48] text-[24px] align-middle">
-                                No hidden fees
+                                Instant booking
                             </h3>
                             <p className="w-full text-center font-['Roboto'] font-normal text-[16px] align-middle mt-1">
-                                Transparent pricing with no hidden fees.
+                                Get confirmation right after you reserve.
                             </p>
                         </div>
                     </div>
@@ -53,10 +53,10 @@ const WhyTriptoSection = () => {
                         </div>
                         <div className="w-full h-[92px] flex flex-col justify-center items-center mt-auto">
                             <h3 className="w-full text-center font-['Roboto'] font-semibold text-[#383E48] text-[24px] align-middle">
-                                No hidden fees
+                                Flexibility
                             </h3>
                             <p className="w-full text-center font-['Roboto'] font-normal text-[16px] align-middle mt-1">
-                                Transparent pricing with no hidden fees.
+                                Flexible options with free cancellation on many listings.
                             </p>
                         </div>
                     </div>
