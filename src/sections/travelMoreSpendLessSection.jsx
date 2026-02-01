@@ -49,7 +49,7 @@ const TravelMoreSpendLessSection = () => {
   };
 
   return (
-    <section className="flex flex-col justify-center items-center min-h-[320px] w-full bg-white overflow-hidden">
+    <section className="flex flex-col justify-center items-center min-h-[350px] w-full bg-white overflow-hidden">
       
       <style>{`
         @keyframes scroll {
