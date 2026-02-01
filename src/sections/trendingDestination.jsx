@@ -255,23 +255,23 @@ export default function TrendingDestinations() {
                     borderTop: '1px solid rgba(255,255,255,0.1)'
                   }}
                 >
-                  <h3 className="font-roboto font-semibold text-[22px] text-[#F0F3F4] truncate">
+                  <h3 className="relative left-2 font-roboto font-semibold text-[22px] text-[#F0F3F4] truncate">
                     {card.title}
                   </h3>
                   
                   <div className="flex items-baseline gap-2">
-                    <span className="font-roboto font-medium text-[18px] text-[#F1F2F3]">
+                    <span className="relative left-2 font-roboto font-medium text-[18px] text-[#F1F2F3]">
                       From €
                     </span>
-                    <span className="font-roboto font-medium text-[18px] text-[#FFCC00]">
+                    <span className="relative left-2 font-roboto font-medium text-[18px] text-[#FFCC00]">
                       {card.price}
                     </span>
-                    <span className="font-roboto font-medium text-[18px] text-[#FFCC00]">
+                    <span className="relative left-2 font-roboto font-medium text-[18px] text-[#FFCC00]">
                       /night
                     </span>
                   </div>
 
-                  <p className="font-roboto font-normal text-[14px] leading-[20px] text-[#F0F3F4] line-clamp-2">
+                  <p className="relative left-2 font-roboto font-normal text-[14px] leading-[20px] text-[#F0F3F4] line-clamp-2">
                     {card.description}
                   </p>
                 </div>
