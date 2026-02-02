@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 // 1. The Checkmark Icon 
 const CheckIcon = () => (
@@ -179,6 +180,16 @@ const chips = [
 
 export default function TrendingDestinations() {
   const [activeSeason, setActiveSeason] = useState("spring");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const season = searchParams.get("season");
+    const propertyType = searchParams.get("propertyType");
+    
+    if (season) {
+      setActiveSeason(season);
+    }
+  }, [searchParams]);
 
   return (
     <section className="w-full min-h-screen bg-amber-50 flex justify-center py-12 lg:py-20">
