@@ -22,7 +22,7 @@ const activitiesData = {
   explore: [
     { id: 101, title: "Sagrada Família", image: "/assets/images/activitiesCard/SagradaFamília.jpg" },
     { id: 102, title: "Park Güell", image: "/assets/images/activitiesCard/ParkGüell.jpg" },
-    { id: 103, title: "Casa Batlló", image: "/assets/images/activitiesCard/GothicQuarter.jpg" }, 
+    { id: 103, title: "Casa Batlló", image: "/assets/images/activitiesCard/CasaBatlló.jpg" }, 
     { id: 104, title: "Gothic Quarter", image: "/assets/images/activitiesCard/GothicQuarter.jpg" },
     { id: 105, title: "La Rambla", image: "/assets/images/activitiesCard/LaRambla.jpg" },
     { id: 106, title: "Montjuïc Castle", image: "/assets/images/activitiesCard/MontjuïcCastle.jpg" },
