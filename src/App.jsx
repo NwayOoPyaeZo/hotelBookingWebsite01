@@ -5,6 +5,7 @@ import TrendingDestinations from './sections/trendingDestination';
 import WeekendDeals from './layout/WeekendDeal';
 import TravelMoreSpendLessSection from './sections/travelMoreSpendLessSection';
 import TopSightsSection from './sections/topSightsSection';
+import TopThingsToDo from './layout/topThingToDo';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <WeekendDeals />
       <TravelMoreSpendLessSection />
       <TopSightsSection />
+      <TopThingsToDo />
     </main>
     <footer>
       {/* footer content */}
