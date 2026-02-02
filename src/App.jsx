@@ -6,6 +6,7 @@ import WeekendDeals from './layout/WeekendDeal';
 import TravelMoreSpendLessSection from './sections/travelMoreSpendLessSection';
 import TopSightsSection from './sections/topSightsSection';
 import TopThingsToDo from './layout/topThingToDo';
+import TriptoinMotionSection from './sections/TriptoinMotionSection';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <TravelMoreSpendLessSection />
       <TopSightsSection />
       <TopThingsToDo />
+      <TriptoinMotionSection />
     </main>
     <footer>
       {/* footer content */}
