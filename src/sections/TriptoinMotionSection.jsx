@@ -21,10 +21,6 @@ const sideVideos = [
 
 const TriptoinMotionSection = () => {
   return (
-    /* Updates:
-      1. lg:h-[800px]: Forces exact desktop height.
-      2. py-24 (96px): Creates perfect centering (96px pad + 608px content + 96px pad = 800px).
-    */
     <section className="flex flex-col items-center justify-center w-full h-auto lg:h-[800px] py-24 bg-[#F1F2F3]">
       
       <div className="flex flex-col gap-8 w-full max-w-[1232px] px-5">

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useSearchParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './layout/navbar';
 import MainHeaderSection from './sections/mainHeaderSection';
 import WhyTriptoSection from './sections/whyTriptoSection';

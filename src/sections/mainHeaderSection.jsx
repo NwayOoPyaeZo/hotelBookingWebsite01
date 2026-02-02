@@ -25,7 +25,6 @@ const MainHeaderSection = () => {
   }, [searchParams]);
 
   useEffect(() => {
-    // Increase fade and slide time for smoother, slower transitions
     const fadeTimeout = setTimeout(() => setFade(false), 4500);
     const slideTimeout = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % images.length);

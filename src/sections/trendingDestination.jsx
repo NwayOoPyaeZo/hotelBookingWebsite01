@@ -202,7 +202,7 @@ export default function TrendingDestinations() {
           </h2>
         </div>
 
-        {/* Chips - Made scrollable on mobile */}
+        {/* Chips */}
         <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
           {chips.map((chip) => (
             <button
@@ -230,7 +230,7 @@ export default function TrendingDestinations() {
                 }
               `}
             >
-              {/* Icon Container (24x24) */}
+              {/* Icon Container */}
               <span className="w-6 h-6 flex items-center justify-center">
                 {chip.icon}
               </span>

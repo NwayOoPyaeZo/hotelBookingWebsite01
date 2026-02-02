@@ -41,7 +41,7 @@ export default function SearchBoxPrototype() {
         setIsMobileSearchOpen(false);
     };
 
-    // YOUR ORIGINAL COUNTER (KEPT FOR DESKTOP)
+    // DESKTOP COUNTER COMPONENT
     const Counter = ({ value, setValue, min = 0 }) => (
         <div className="flex relative right-10 items-center gap-3">
             <button

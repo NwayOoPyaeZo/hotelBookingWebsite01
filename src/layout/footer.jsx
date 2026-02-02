@@ -46,7 +46,7 @@ const Footer = () => {
         gap-10 lg:gap-[50px]
       ">
         
-        {/* Column 1: Brand & App (Centered on Mobile, Left on Desktop) */}
+        {/* Column 1: Brand & App  */}
         <div className="
           flex flex-col gap-8 w-full lg:w-[310px]
           items-center lg:items-start
@@ -114,10 +114,7 @@ const Footer = () => {
 
         </div>
 
-        {/* --- NAVIGATION LINKS WRAPPER ---
-          Mobile: Grid 2 Columns. 
-          Desktop: Flex Row.
-        */}
+        {/* --- NAVIGATION LINKS WRAPPER ---*/}
         <div className="
           w-full lg:w-auto
           grid grid-cols-2 gap-x-6 gap-y-10
@@ -125,7 +122,6 @@ const Footer = () => {
         ">
 
           {/* Column 2: Explore */}
-          {/* Mobile: items-center, text-center. Desktop: items-start, text-left */}
           <div className="flex flex-col items-center lg:items-start gap-4 w-full lg:w-[200px]">
             <h3 className="font-roboto font-semibold text-[18px] leading-[24px] text-[#99BDFF] text-center lg:text-left">
               Explore
