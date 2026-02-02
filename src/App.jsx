@@ -7,6 +7,7 @@ import TravelMoreSpendLessSection from './sections/travelMoreSpendLessSection';
 import TopSightsSection from './sections/topSightsSection';
 import TopThingsToDo from './layout/topThingToDo';
 import TriptoinMotionSection from './sections/TriptoinMotionSection';
+import HomeGuestsLove from './sections/homeGuestsLove';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       <TopSightsSection />
       <TopThingsToDo />
       <TriptoinMotionSection />
+      <HomeGuestsLove />
     </main>
     <footer>
       {/* footer content */}
