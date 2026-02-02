@@ -97,7 +97,7 @@ const TestimonialSection = () => {
     setUsers(newUsers);
   };
 
-  // Helper to handle broken images
+  // Fallback for image errors
   const handleImageError = (e) => {
     e.target.src = FALLBACK_IMAGE;
   };
@@ -119,7 +119,7 @@ const TestimonialSection = () => {
         {/* --- HEADER SECTION --- */}
         <div className="w-full flex flex-col items-center gap-5 z-20 px-4">
           <h2 className="
-            relative lg:top-7.5
+            relative lg:top-7.5 top-8
             font-poppins font-normal 
             text-[16px] leading-[24px] 
             text-center text-[#6B7280]
