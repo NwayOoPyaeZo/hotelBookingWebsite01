@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import PropertyTypeBar from "../components/propertyTypeBar";
 import SearchBoxPrototype from "../components/searchBoxPrototype";
 import heroPic01 from "/assets/images/heroBanner/heroPic01.jpg";
@@ -14,6 +15,14 @@ const MainHeaderSection = () => {
   const [current, setCurrent] = useState(0);
   const [fade, setFade] = useState(true);
   const [activeType, setActiveType] = useState("hotel");
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const propertyType = searchParams.get("propertyType");
+    if (propertyType) {
+      setActiveType(propertyType);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     // Increase fade and slide time for smoother, slower transitions
@@ -30,7 +39,7 @@ const MainHeaderSection = () => {
 
 
   return (
-    <section className="w-full h-150 lg:h-auto">
+    <section id="property-type-bar" className="w-full h-150 lg:h-auto">
       <div className="relative -top-[96px] w-full h-[607px] overflow-hidden rounded-b-[32px]">
         {/* Image */}
         <img
