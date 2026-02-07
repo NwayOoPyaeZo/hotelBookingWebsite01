@@ -53,7 +53,7 @@ const Footer = () => {
           text-center lg:text-left
         ">
           
-          <div className="flex flex-col items-center lg:items-start gap-4">
+          <div className="relative top-5 lg:top-0 flex flex-col items-center lg:items-start gap-4">
             {/* Tripto Logo */}
             <div className="w-[80px] h-[30px]">
               <svg width="80" height="30" viewBox="0 0 80 30" fill="none" xmlns="http://www.w3.org/2000/svg">

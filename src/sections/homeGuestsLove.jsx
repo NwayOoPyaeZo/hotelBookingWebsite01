@@ -1,120 +1,25 @@
 import React, { useRef } from 'react';
 import WeekendDealCard from '../components/WeekendDealCard';
-
-// Data for "Homes Guests Love" - High ratings, no discounts
-const homesData = [
-    {
-        id: 1,
-        title: "Aparthotel Stare Miasto",
-        location: "Krakow, Poland",
-        rating: 4.8,
-        reviewText: "Exceptional",
-        reviews: 2450,
-        priceOld: null, 
-        priceNew: 120,
-        imageUrl: "/assets/images/GuestLove/AparthotelStareMiasto.jpg"
-    },
-    {
-        id: 2,
-        title: "7Seasons Apartments",
-        location: "Budapest, Hungary",
-        rating: 4.7,
-        reviewText: "Excellent",
-        reviews: 1800,
-        priceOld: null,
-        priceNew: 145,
-        imageUrl: "/assets/images/GuestLove/7SeasonsApartments.jpg"
-    },
-    {
-        id: 3,
-        title: "Cheval Three Quays",
-        location: "London, UK",
-        rating: 4.9,
-        reviewText: "Superb",
-        reviews: 3200,
-        priceOld: null,
-        priceNew: 450,
-        imageUrl: "/assets/images/GuestLove/ChevalThreeQuays.jpg"
-    },
-    {
-        id: 4,
-        title: "Sugar Loft Apartments",
-        location: "Rio de Janeiro, Brazil",
-        rating: 4.6,
-        reviewText: "Very Good",
-        reviews: 950,
-        priceOld: null,
-        priceNew: 85,
-        imageUrl: "/assets/images/GuestLove/SugarLoftApartments.jpg"
-    },
-    {
-        id: 5,
-        title: "Villa Domina",
-        location: "Split, Croatia",
-        rating: 4.8,
-        reviewText: "Exceptional",
-        reviews: 1100,
-        priceOld: null,
-        priceNew: 210,
-        imageUrl: "/assets/images/GuestLove/VillaDomina.jpg"
-    },
-    {
-        id: 6,
-        title: "Kyoto Machiya Stay",
-        location: "Kyoto, Japan",
-        rating: 4.9,
-        reviewText: "Superb",
-        reviews: 850,
-        priceOld: null,
-        priceNew: 300,
-        imageUrl: "/assets/images/GuestLove/KyotoMachiyaStay.jpg"
-    }
-];
+import { homesData } from '../data/homeData';
 
 const HomeGuestsLove = () => {
     const sliderRef = useRef(null);
 
-    // Scroll Handler
     const slide = (direction) => {
         if (sliderRef.current) {
-            const { current } = sliderRef;
-            const scrollAmount = 320;
-
-            if (direction === 'left') {
-                current.scrollLeft -= scrollAmount;
-            } else {
-                current.scrollLeft += scrollAmount;
-            }
+            const scrollAmount = 340;
+            sliderRef.current.scrollLeft += direction === 'left' ? -scrollAmount : scrollAmount;
         }
     };
 
-    // Navigation Button Classes
-    const navBtnClass = `
-        flex items-center justify-center w-10 h-10 
-        bg-white rounded-full shadow-sm 
-        border border-[#DDDFE3] text-[#B5BAC2]
-        transition-all duration-200 
-        hover:border-[#2B3037] hover:text-[#2B3037] hover:bg-gray-50
-        active:scale-95
-    `;
+    const navBtnClass = "flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-sm border border-[#DDDFE3] text-[#B5BAC2] transition-all duration-200 hover:border-[#2B3037] hover:text-[#2B3037] active:scale-95";
 
     return (
-        <section className="flex flex-col justify-center items-center gap-12 py-12 px-5 bg-white w-full min-h-[600px]">
-
-            {/* Hide scrollbar utility styles */}
-            <style>{`
-                .no-scrollbar::-webkit-scrollbar {
-                  display: none;
-                }
-                .no-scrollbar {
-                  -ms-overflow-style: none;
-                  scrollbar-width: none;
-                }
-            `}</style>
+                <section className="flex flex-col items-center gap-12 py-12 px-5 bg-white w-full min-h-[600px]">
 
             {/* --- Header Section --- */}
-            <div className="flex flex-col lg:flex-row justify-between items-center w-full max-w-[1232px] gap-6 lg:gap-0">
-                <h2 className="font-roboto font-semibold text-[32px] md:text-[40px] leading-[42px] md:leading-[52px] text-[#121316] text-center lg:text-left">
+            <div className="flex flex-col lg:flex-row justify-between items-center w-full max-w-[1232px] gap-6">
+                <h2 className="font-roboto font-semibold text-[32px] md:text-[40px] text-[#121316]">
                     Homes Guests Love
                 </h2>
 
@@ -125,8 +30,8 @@ const HomeGuestsLove = () => {
                         className={navBtnClass}
                         aria-label="Scroll left"
                     >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M15 18L9 12L15 6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
                     
@@ -135,8 +40,8 @@ const HomeGuestsLove = () => {
                         className={navBtnClass}
                         aria-label="Scroll right"
                     >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M9 18L15 12L9 6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -145,25 +50,14 @@ const HomeGuestsLove = () => {
             {/* --- Product Slider --- */}
             <div
                 ref={sliderRef}
-                className="
-                    flex flex-row flex-nowrap 
-                    overflow-x-auto scroll-smooth no-scrollbar 
-                    gap-4 w-full max-w-[1232px] 
-                    px-2 pb-4
-                    items-start
-                "
+                className="flex flex-row overflow-x-auto scroll-smooth no-scrollbar gap-4 w-full max-w-[1232px] px-2 pb-4 items-start"
             >
                 {homesData.map((home) => (
                     <div key={home.id} className="shrink-0">
                         <WeekendDealCard
                             image={home.imageUrl}
-                            title={home.title}
-                            location={home.location}
-                            rating={home.rating}
-                            reviewText={home.reviewText}
+                            {...home}
                             reviewCount={home.reviews}
-                            priceOld={home.priceOld}
-                            priceNew={home.priceNew}
                         />
                     </div>
                 ))}

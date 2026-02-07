@@ -128,9 +128,11 @@ const WeekendDealCard = ({
                             <span className="font-roboto font-normal text-sm text-[#8B94A4]">
                                 per night
                             </span>
-                            <span className="font-roboto font-medium text-base text-[#8B94A4] line-through">
-                                €{priceOld}
-                            </span>
+                            {priceOld && (
+                                <span className="font-roboto font-medium text-base text-[#8B94A4] line-through">
+                                    €{priceOld}
+                                </span>
+                            )}
                             <span className="font-roboto font-semibold text-lg text-[#1F2226]">
                                 €{priceNew}
                             </span>
