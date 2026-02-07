@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { imagePath } from "../lib/image";
 import { 
   Compass, 
   Umbrella, 
@@ -20,52 +21,52 @@ const categories = [
 
 const activitiesData = {
   explore: [
-    { id: 101, title: "Sagrada Família", image: "/assets/images/activitiesCard/SagradaFamília.jpg" },
-    { id: 102, title: "Park Güell", image: "/assets/images/activitiesCard/ParkGüell.jpg" },
-    { id: 103, title: "Casa Batlló", image: "/assets/images/activitiesCard/CasaBatlló.jpg" }, 
-    { id: 104, title: "Gothic Quarter", image: "/assets/images/activitiesCard/GothicQuarter.jpg" },
-    { id: 105, title: "La Rambla", image: "/assets/images/activitiesCard/LaRambla.jpg" },
-    { id: 106, title: "Montjuïc Castle", image: "/assets/images/activitiesCard/MontjuïcCastle.jpg" },
+    { id: 101, title: "Sagrada Família", image: imagePath("activities-card/sagrada-familia.jpg") },
+    { id: 102, title: "Park Güell", image: imagePath("activities-card/park-guell.jpg") },
+    { id: 103, title: "Casa Batlló", image: imagePath("activities-card/casa-batllo.jpg") },
+    { id: 104, title: "Gothic Quarter", image: imagePath("activities-card/gothic-quarter.jpg") },
+    { id: 105, title: "La Rambla", image: imagePath("activities-card/la-rambla.jpg") },
+    { id: 106, title: "Montjuïc Castle", image: imagePath("activities-card/montjuic-castle.jpg") },
   ],
   beach: [
-    { id: 201, title: "Barceloneta Beach", image: "/assets/images/activitiesCard/BarcelonetaBeach.jpg" },
-    { id: 202, title: "Bogatell Beach", image: "/assets/images/activitiesCard/BogatellBeach.jpg" },
-    { id: 203, title: "Nova Icària", image: "/assets/images/activitiesCard/NovaIcària.jpg" },
-    { id: 204, title: "Somorrostro", image: "/assets/images/activitiesCard/Somorrostro.png" }, 
-    { id: 205, title: "Mar Bella", image: "/assets/images/activitiesCard/MarBella.png" }, 
-    { id: 206, title: "Sant Sebastià", image: "/assets/images/activitiesCard/SantSebastià.jpg" },
+    { id: 201, title: "Barceloneta Beach", image: imagePath("activities-card/barceloneta-beach.jpg") },
+    { id: 202, title: "Bogatell Beach", image: imagePath("activities-card/bogatell-beach.jpg") },
+    { id: 203, title: "Nova Icària", image: imagePath("activities-card/nova-icaria.jpg") },
+    { id: 204, title: "Somorrostro", image: imagePath("activities-card/somorrostro.png") },
+    { id: 205, title: "Mar Bella", image: imagePath("activities-card/mar-bella.png") },
+    { id: 206, title: "Sant Sebastià", image: imagePath("activities-card/sant-sebastia.jpg") },
   ],
   museum: [
-    { id: 301, title: "Picasso Museum", image: "/assets/images/activitiesCard/PicassoMuseum.jpg" },
-    { id: 302, title: "MNAC Art Museum", image: "/assets/images/activitiesCard/MNACArtMuseum.jpg" },
-    { id: 303, title: "Joan Miró Fdn.", image: "/assets/images/activitiesCard/JoanMiróFdn..png" }, 
-    { id: 304, title: "MACBA Contemporary", image: "/assets/images/activitiesCard/MACBA Contemporary.png" }, 
-    { id: 305, title: "CosmoCaixa", image: "/assets/images/activitiesCard/CosmoCaixa.png" }, 
-    { id: 306, title: "FC Barcelona Museum", image: "/assets/images/activitiesCard/FCBarcelonaMuseum.png" }, 
+    { id: 301, title: "Picasso Museum", image: imagePath("activities-card/picasso-museum.jpg") },
+    { id: 302, title: "MNAC Art Museum", image: imagePath("activities-card/mnac-art-museum.jpg") },
+    { id: 303, title: "Joan Miró Fdn.", image: imagePath("activities-card/joan-miro-fdn.png") },
+    { id: 304, title: "MACBA Contemporary", image: imagePath("activities-card/macba-contemporary.png") },
+    { id: 305, title: "CosmoCaixa", image: imagePath("activities-card/cosmo-caixa.png") },
+    { id: 306, title: "FC Barcelona Museum", image: imagePath("activities-card/fc-barcelona-museum.png") },
   ],
   show: [
-    { id: 401, title: "Magic Fountain", image: "/assets/images/activitiesCard/MagicFountain.jpg" },
-    { id: 402, title: "Palau de la Música", image: "/assets/images/activitiesCard/PalaudelaMúsica.jpg" },
-    { id: 403, title: "Tablao Flamenco", image: "/assets/images/activitiesCard/TablaoFlamenco.jpg" },
-    { id: 404, title: "Gran Teatre del Liceu", image: "/assets/images/activitiesCard/GranTeatredelLiceu.jpg" },
-    { id: 405, title: "Teatre Grec", image: "/assets/images/activitiesCard/TeatreGrec.jpg" },
-    { id: 406, title: "Guitar Trio Show", image: "/assets/images/activitiesCard/GuitarTrioShow.jpg" },
+    { id: 401, title: "Magic Fountain", image: imagePath("activities-card/magic-fountain.jpg") },
+    { id: 402, title: "Palau de la Música", image: imagePath("activities-card/palau-de-la-musica.jpg") },
+    { id: 403, title: "Tablao Flamenco", image: imagePath("activities-card/tablao-flamenco.jpg") },
+    { id: 404, title: "Gran Teatre del Liceu", image: imagePath("activities-card/gran-teatre-del-liceu.jpg") },
+    { id: 405, title: "Teatre Grec", image: imagePath("activities-card/teatre-grec.jpg") },
+    { id: 406, title: "Guitar Trio Show", image: imagePath("activities-card/guitar-trio-show.jpg") },
   ],
   food: [
-    { id: 501, title: "La Boqueria Market", image: "/assets/images/activitiesCard/LaBoqueriaMarket.png" }, 
-    { id: 502, title: "El Nacional", image: "/assets/images/activitiesCard/ElNacional.jpg" },
-    { id: 503, title: "Tapas at Cervecería", image: "/assets/images/activitiesCard/TapasAtCervecería.jpg" },
-    { id: 504, title: "Paella at 7 Portes", image: "/assets/images/activitiesCard/PaellaAt7Portes.jpg" },
-    { id: 505, title: "Granja Viader", image: "/assets/images/activitiesCard/GranjaViader.jpg" },
-    { id: 506, title: "Santa Caterina", image: "/assets/images/activitiesCard/SantaCaterina.jpg" },
+    { id: 501, title: "La Boqueria Market", image: imagePath("activities-card/la-boqueria-market.png") },
+    { id: 502, title: "El Nacional", image: imagePath("activities-card/el-nacional.jpg") },
+    { id: 503, title: "Tapas at Cervecería", image: imagePath("activities-card/tapas-at-cerveceria.jpg") },
+    { id: 504, title: "Paella at 7 Portes", image: imagePath("activities-card/paella-at-7-portes.jpg") },
+    { id: 505, title: "Granja Viader", image: imagePath("activities-card/granja-viader.jpg") },
+    { id: 506, title: "Santa Caterina", image: imagePath("activities-card/santa-caterina.jpg") },
   ],
   nightlife: [
-    { id: 601, title: "Opium Barcelona", image: "/assets/images/activitiesCard/OpiumBarcelona.jpg" },
-    { id: 602, title: "Razzmatazz", image: "/assets/images/activitiesCard/Razzmatazz.jpg" },
-    { id: 603, title: "Pacha Barcelona", image: "/assets/images/activitiesCard/PachaBarcelona.jpg" },
-    { id: 604, title: "Sala Apolo", image: "/assets/images/activitiesCard/SalaApolo.jpg" },
-    { id: 605, title: "Eclipse Bar (W Hotel)", image: "/assets/images/activitiesCard/EclipseBar.jpg" },
-    { id: 606, title: "Sutton Club", image: "/assets/images/activitiesCard/SuttonClub.jpg" },
+    { id: 601, title: "Opium Barcelona", image: imagePath("activities-card/opium-barcelona.jpg") },
+    { id: 602, title: "Razzmatazz", image: imagePath("activities-card/razzmatazz.jpg") },
+    { id: 603, title: "Pacha Barcelona", image: imagePath("activities-card/pacha-barcelona.jpg") },
+    { id: 604, title: "Sala Apolo", image: imagePath("activities-card/sala-apolo.jpg") },
+    { id: 605, title: "Eclipse Bar (W Hotel)", image: imagePath("activities-card/eclipse-bar.jpg") },
+    { id: 606, title: "Sutton Club", image: imagePath("activities-card/sutton-club.jpg") },
   ]
 };
 
@@ -77,7 +78,7 @@ const TopThingsToDo = () => {
 
   return (
     
-    <section className="flex flex-col items-center justify-center min-h-[450px] py-24 w-full bg-white">
+    <section className="flex flex-col items-center justify-center h-[150vh] lg:h-[450px] py-24 w-full bg-white">
       
       {/* Main Container */}
       <div className="flex flex-col gap-8 w-full max-w-[1232px] px-5">
@@ -125,7 +126,7 @@ const TopThingsToDo = () => {
         </div>
 
         {/* --- Product Cards Grid --- */}
-        <div className="flex flex-row flex-wrap gap-x-4 gap-y-8 w-full mt-8">
+        <div className="flex flex-row justify-center flex-wrap gap-x-10 lg:gap-x-4 gap-y-8 w-full">
           {currentActivities.map((activity) => (
             <div 
               key={activity.id}

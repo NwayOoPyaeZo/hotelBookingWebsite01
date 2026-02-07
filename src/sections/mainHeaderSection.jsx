@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import PropertyTypeBar from "../components/propertyTypeBar";
-import SearchBoxPrototype from "../components/searchBoxPrototype";
-import heroPic01 from "/assets/images/heroBanner/heroPic01.jpg";
-import heroPic02 from "/assets/images/heroBanner/heroPic02.jpg";
-import heroPic03 from "/assets/images/heroBanner/heroPic03.jpg";
-import heroPic04 from "/assets/images/heroBanner/heroPic04.png";
-import heroPic05 from "/assets/images/heroBanner/heroPic05.png";
+import SearchBoxPrototype from "../components/shared/searchBoxPrototype";
+import heroPic01 from "/assets/images/hero-banner/hero-pic-01.jpg";
+import heroPic02 from "/assets/images/hero-banner/hero-pic-02.jpg";
+import heroPic03 from "/assets/images/hero-banner/hero-pic-03.jpg";
+import heroPic04 from "/assets/images/hero-banner/hero-pic-04.png";
+import heroPic05 from "/assets/images/hero-banner/hero-pic-05.png";
 
 const images = [heroPic01, heroPic02, heroPic03, heroPic04, heroPic05];
 

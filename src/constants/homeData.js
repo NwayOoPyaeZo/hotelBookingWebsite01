@@ -1,3 +1,5 @@
+import { imagePath } from "../lib/image";
+
 export const homesData = [
     {
         id: 1,
@@ -8,7 +10,7 @@ export const homesData = [
         reviews: 2450,
         priceOld: null, 
         priceNew: 120,
-        imageUrl: "/assets/images/GuestLove/AparthotelStareMiasto.jpg"
+        imageUrl: imagePath("guest-love/aparthotel-stare-miasto.jpg")
     },
     {
         id: 2,
@@ -19,7 +21,7 @@ export const homesData = [
         reviews: 1800,
         priceOld: null,
         priceNew: 145,
-        imageUrl: "/assets/images/GuestLove/7SeasonsApartments.jpg"
+        imageUrl: imagePath("guest-love/7-seasons-apartments.jpg")
     },
     {
         id: 3,
@@ -30,7 +32,7 @@ export const homesData = [
         reviews: 3200,
         priceOld: null,
         priceNew: 450,
-        imageUrl: "/assets/images/GuestLove/ChevalThreeQuays.jpg"
+        imageUrl: imagePath("guest-love/cheval-three-quays.jpg")
     },
     {
         id: 4,
@@ -41,7 +43,7 @@ export const homesData = [
         reviews: 950,
         priceOld: null,
         priceNew: 85,
-        imageUrl: "/assets/images/GuestLove/SugarLoftApartments.jpg"
+        imageUrl: imagePath("guest-love/sugar-loft-apartments.jpg")
     },
     {
         id: 5,
@@ -52,7 +54,7 @@ export const homesData = [
         reviews: 1100,
         priceOld: null,
         priceNew: 210,
-        imageUrl: "/assets/images/GuestLove/VillaDomina.jpg"
+        imageUrl: imagePath("guest-love/villa-domina.jpg")
     },
     {
         id: 6,
@@ -63,6 +65,6 @@ export const homesData = [
         reviews: 850,
         priceOld: null,
         priceNew: 300,
-        imageUrl: "/assets/images/GuestLove/KyotoMachiyaStay.jpg"
+        imageUrl: imagePath("guest-love/kyoto-machiya-stay.jpg")
     }
 ];
