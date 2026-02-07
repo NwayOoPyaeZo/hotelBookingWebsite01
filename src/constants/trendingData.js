@@ -1,3 +1,5 @@
+import { imagePath } from "../lib/image";
+
 export const chips = [
   { label: "Spring Picks", value: "spring" },
   { label: "Summer Hotspot", value: "summer" },
@@ -6,20 +8,19 @@ export const chips = [
 ];
 
 export const trendingCards = [
-
   // spring cards
   {
     id: 1,
     season: "spring",
-    image: "/assets/images/card/paris.jpg",
+    image: imagePath("card/paris.jpg"),
     title: "Paris, France",
     price: 128,
-    description: "Gardens, art, and café culture.",
+    description: "Gardens, art, and cafe culture.",
   },
   {
     id: 2,
     season: "spring",
-    image: "/assets/images/card/Florence.jpg",
+    image: imagePath("card/florence.jpg"),
     title: "Florence, Italy",
     price: 110,
     description: "Tuscan hills, and Renaissance charm.",
@@ -27,7 +28,7 @@ export const trendingCards = [
   {
     id: 3,
     season: "spring",
-    image: "/assets/images/card/Amsterdam.webp",
+    image: imagePath("card/amsterdam.webp"),
     title: "Amsterdam, Netherlands",
     price: 95,
     description: "Tulips and canal cruises.",
@@ -35,7 +36,7 @@ export const trendingCards = [
   {
     id: 4,
     season: "spring",
-    image: "/assets/images/card/Washington.jpg",
+    image: imagePath("card/washington.jpg"),
     title: "Washington D.C., USA",
     price: 105,
     description: "Cherry blossoms and museums.",
@@ -45,7 +46,7 @@ export const trendingCards = [
   {
     id: 5,
     season: "summer",
-    image: "/assets/images/card/barcelona.jpg",
+    image: imagePath("card/barcelona.jpg"),
     title: "Barcelona, Spain",
     price: 140,
     description: "Beaches, tapas, nightlife.",
@@ -53,7 +54,7 @@ export const trendingCards = [
   {
     id: 6,
     season: "summer",
-    image: "/assets/images/card/santorini.jpg",
+    image: imagePath("card/santorini.jpg"),
     title: "Santorini, Greece",
     price: 180,
     description: "Whitewashed views and sunsets.",
@@ -61,7 +62,7 @@ export const trendingCards = [
   {
     id: 7,
     season: "summer",
-    image: "/assets/images/card/Bali.jpg",
+    image: imagePath("card/bali.jpg"),
     title: "Bali, Indonesia",
     price: 90,
     description: "Tropical shores and rice terraces.",
@@ -69,7 +70,7 @@ export const trendingCards = [
   {
     id: 8,
     season: "summer",
-    image: "/assets/images/card/Miami.jpg",
+    image: imagePath("card/miami.jpg"),
     title: "Miami, USA",
     price: 135,
     description: "Art deco, beaches, nightlife.",
@@ -79,7 +80,7 @@ export const trendingCards = [
   {
     id: 9,
     season: "autumn",
-    image: "/assets/images/card/Munich.jpg",
+    image: imagePath("card/munich.jpg"),
     title: "Munich, Germany",
     price: 120,
     description: "Oktoberfest and golden foliage.",
@@ -87,7 +88,7 @@ export const trendingCards = [
   {
     id: 10,
     season: "autumn",
-    image: "/assets/images/card/Kyoto.jpg",
+    image: imagePath("card/kyoto.jpg"),
     title: "Kyoto, Japan",
     price: 115,
     description: "Maple leaves and serene gardens.",
@@ -95,7 +96,7 @@ export const trendingCards = [
   {
     id: 11,
     season: "autumn",
-    image: "/assets/images/card/Seoul.jpg",
+    image: imagePath("card/seoul.jpg"),
     title: "Seoul, South Korea",
     price: 160,
     description: "Palaces and autumn colors.",
@@ -103,17 +104,17 @@ export const trendingCards = [
   {
     id: 12,
     season: "autumn",
-    image: "/assets/images/card/Prague.jpg",
+    image: imagePath("card/prague.jpg"),
     title: "Prague, Czechia",
     price: 100,
     description: "Golden leaves, and riverside walks.",
   },
-  
+
   // Winter cards
   {
     id: 13,
     season: "winter",
-    image: "/assets/images/card/Zermatt.jpg",
+    image: imagePath("card/zermatt.jpg"),
     title: "Zermatt, Switzerland",
     price: 200,
     description: "Alpine chalets, ski slopes, and snowy peaks.",
@@ -121,7 +122,7 @@ export const trendingCards = [
   {
     id: 14,
     season: "winter",
-    image: "/assets/images/card/Banff.jpg",
+    image: imagePath("card/banff.jpg"),
     title: "Banff, Canada",
     price: 150,
     description: "Frozen lakes, and mountain trails.",
@@ -129,7 +130,7 @@ export const trendingCards = [
   {
     id: 15,
     season: "winter",
-    image: "/assets/images/card/Vienna.jpg",
+    image: imagePath("card/vienna.jpg"),
     title: "Vienna, Austria",
     price: 130,
     description: "Festive streets, and cozy charm.",
@@ -137,9 +138,9 @@ export const trendingCards = [
   {
     id: 16,
     season: "winter",
-    image: "/assets/images/card/Oslo.jpg",
+    image: imagePath("card/oslo.jpg"),
     title: "Oslo, Norway",
     price: 125,
-    description: "Snowy lodges, northern lights, and warm cafés.",
+    description: "Snowy lodges, northern lights, and warm cafes.",
   },
 ];

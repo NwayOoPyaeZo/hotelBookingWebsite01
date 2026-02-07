@@ -1,4 +1,4 @@
-import LanguageCurrency from "../components/LanguageCurrency";
+import LanguageCurrency from "../components/shared/LanguageCurrency";
 
 
 const Navbar = () => {

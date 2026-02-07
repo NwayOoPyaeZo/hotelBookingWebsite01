@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getLocales } from "../api/locale";
+import { getLocales } from "../../services/locale";
 
 const LanguageCurrency = () => {
     const [locales, setLocales] = useState([]);

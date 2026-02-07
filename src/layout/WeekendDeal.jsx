@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import WeekendDealCard from '../components/WeekendDealCard';
-import { weekendDeals } from '../data/weekendData';
+import { weekendDeals } from "../constants/weekendData";
 
 const WeekendDeals = () => {
     const sliderRef = useRef(null);
@@ -15,11 +15,11 @@ const WeekendDeals = () => {
     const navBtnClass = "flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-sm border border-[#DDDFE3] text-[#B5BAC2] transition-all duration-200 hover:border-[#2B3037] hover:text-[#2B3037] active:scale-95";
 
     return (
-        <section className="flex flex-col items-center gap-12 py-12 px-5 bg-[#F1F2F3] w-full">
+        <section className="flex flex-col items-center gap-15 lg:gap-12 bg-[#F1F2F3] w-full">
 
             {/* --- Header Section --- */}
-                        <div className="flex flex-col lg:flex-row justify-between items-center w-full max-w-[1232px] gap-6">
-                                <h2 className="font-roboto font-semibold text-[32px] md:text-[40px] text-[#121316]">
+            <div className="flex flex-col relative top-7.5 lg:top-0 lg:flex-row justify-between items-center w-full max-w-[1232px] gap-7">
+                 <h2 className=" font-roboto font-semibold text-[32px] md:text-[40px] text-[#121316]">
                     Deals for the Weekend
                 </h2>
 

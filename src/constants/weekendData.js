@@ -1,3 +1,5 @@
+import { imagePath } from "../lib/image";
+
 export const weekendDeals = [
   {
     id: 1,
@@ -8,7 +10,7 @@ export const weekendDeals = [
     reviews: 160,
     priceOld: 250,
     priceNew: 175,
-    imageUrl: "/assets/images/weeklyDealCard/AmalfiCoast.jpg",
+    imageUrl: imagePath("weekly-deal-card/amalfi-coast.jpg"),
   },
   {
     id: 2,
@@ -19,7 +21,7 @@ export const weekendDeals = [
     reviews: 210,
     priceOld: 400,
     priceNew: 299,
-    imageUrl: "/assets/images/weeklyDealCard/SwissAlps.jpg",
+    imageUrl: imagePath("weekly-deal-card/swiss-alps.jpg"),
   },
   {
     id: 3,
@@ -30,7 +32,7 @@ export const weekendDeals = [
     reviews: 85,
     priceOld: 550,
     priceNew: 420,
-    imageUrl: "/assets/images/weeklyDealCard/Maldives.jpg",
+    imageUrl: imagePath("weekly-deal-card/maldives.jpg"),
   },
   {
     id: 4,
@@ -41,7 +43,7 @@ export const weekendDeals = [
     reviews: 185,
     priceOld: 450,
     priceNew: 320,
-    imageUrl: "/assets/images/weeklyDealCard/Santorini.jpg",
+    imageUrl: imagePath("weekly-deal-card/santorini.jpg"),
   },
   {
     id: 5,
@@ -52,6 +54,6 @@ export const weekendDeals = [
     reviews: 320,
     priceOld: 600,
     priceNew: 450,
-    imageUrl: "/assets/images/weeklyDealCard/Dubai.jpg",
+    imageUrl: imagePath("weekly-deal-card/dubai.jpg"),
   },
 ];
