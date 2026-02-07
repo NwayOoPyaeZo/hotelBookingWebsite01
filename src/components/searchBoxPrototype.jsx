@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Minus, Plus, Search, X, MapPin, Calendar } from "lucide-react";
 
 export default function SearchBoxPrototype() {
@@ -18,6 +18,7 @@ export default function SearchBoxPrototype() {
     // --- MOBILE SPECIFIC STATE ---
     const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
     const [mobileStep, setMobileStep] = useState(0); // 0: Where, 1: When, 2: Who
+    const [activeLocationIndex, setActiveLocationIndex] = useState(-1);
 
     const recentSearches = ["Bangkok", "Chiang Mai", "Phuket"];
     const suggestedDestinations = [
@@ -27,6 +28,34 @@ export default function SearchBoxPrototype() {
         "Paris",
         "London",
     ];
+    const allDestinations = [...recentSearches, ...suggestedDestinations];
+
+    useEffect(() => {
+        if (isLocationOpen) {
+            setActiveLocationIndex(-1);
+        }
+    }, [isLocationOpen]);
+
+    useEffect(() => {
+        if (isMobileSearchOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isMobileSearchOpen]);
+
+    const selectLocation = (value) => {
+        setLocation(value);
+        setIsLocationOpen(false);
+        setActiveLocationIndex(-1);
+
+        if (isMobileSearchOpen && mobileStep === 0) {
+            setMobileStep(1);
+        }
+    };
 
     const handleSearch = () => {
         const payload = {
@@ -41,52 +70,52 @@ export default function SearchBoxPrototype() {
         setIsMobileSearchOpen(false);
     };
 
-    // DESKTOP COUNTER COMPONENT
-    const Counter = ({ value, setValue, min = 0 }) => (
-        <div className="flex relative right-10 items-center gap-3">
-            <button
-                type="button"
-                onClick={() => setValue(value - 1)}
-                disabled={value <= min}
-                className="w-6 h-6 flex items-center justify-center rounded-full border disabled:opacity-30 p-0 leading-none"
-            >
-                <Minus className="w-4 h-4" />
-            </button>
-            <span className="w-4 text-center">{value}</span>
-            <button
-                type="button"
-                onClick={() => setValue(value + 1)}
-                className="w-6 h-6 flex items-center justify-center text-[#0057FF] rounded-full border p-0 leading-none"
-            >
-                <Plus className="w-4 h-4" />
-            </button>
-        </div>
-    );
+    const Counter = ({ value, setValue, min = 0, variant = "desktop" }) => {
+        const isDesktop = variant === "desktop";
+        const containerClass = isDesktop
+            ? "flex relative right-10 items-center gap-3"
+            : "flex items-center gap-4";
+        const buttonClass = isDesktop
+            ? "w-6 h-6 flex items-center justify-center rounded-full border disabled:opacity-30 p-0 leading-none"
+            : "w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 disabled:opacity-30 text-gray-500";
+        const plusButtonClass = isDesktop
+            ? "w-6 h-6 flex items-center justify-center text-[#0057FF] rounded-full border p-0 leading-none"
+            : "w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500";
+        const valueClass = isDesktop ? "w-4 text-center" : "w-6 text-center font-medium";
 
-    // NEW CLEAN COUNTER (FOR MOBILE)
-    const MobileCounter = ({ value, setValue, min = 0 }) => (
-        <div className="flex items-center gap-4">
-            <button
-                type="button"
-                onClick={() => setValue(value - 1)}
-                disabled={value <= min}
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 disabled:opacity-30 text-gray-500"
-            >
-                <Minus className="w-4 h-4" />
-            </button>
-            <span className="w-6 text-center font-medium">{value}</span>
-            <button
-                type="button"
-                onClick={() => setValue(value + 1)}
-                className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500"
-            >
-                <Plus className="w-4 h-4" />
-            </button>
-        </div>
-    );
+        return (
+            <div className={containerClass}>
+                <button
+                    type="button"
+                    onClick={() => setValue(value - 1)}
+                    disabled={value <= min}
+                    className={buttonClass}
+                >
+                    <Minus className="w-4 h-4" />
+                </button>
+                <span className={valueClass}>{value}</span>
+                <button
+                    type="button"
+                    onClick={() => setValue(value + 1)}
+                    className={plusButtonClass}
+                >
+                    <Plus className="w-4 h-4" />
+                </button>
+            </div>
+        );
+    };
 
     return (
         <>
+            {(isLocationOpen || isGuestOpen) && !isMobileSearchOpen && (
+                <div
+                    className="fixed inset-0 z-40 bg-transparent hidden lg:block"
+                    onClick={() => {
+                        setIsLocationOpen(false);
+                        setIsGuestOpen(false);
+                    }}
+                />
+            )}
             {/* ===========================================================================
                 DESKTOP VERSION
                =========================================================================== */}
@@ -96,32 +125,57 @@ export default function SearchBoxPrototype() {
 
                         {/* Location Section */}
                        
-                        <div className={`relative lg:left-2 flex flex-col justify-center gap-1 w-[280px] h-[72px] px-4 rounded-xl hover:bg-[#E8EFFC] ${isLocationOpen ? 'z-50' : 'z-auto'}`}>
+                        <div className={`relative lg:left-2 flex flex-col justify-center gap-1 w-[280px] h-[72px] px-4 rounded-xl hover:bg-[#E8EFFC] ${isLocationOpen ? 'z-50 bg-[#E8EFFC]' : 'z-auto'}`}>
                             <span className="relative lg:left-8 text-[18px] font-medium text-[#2B3037]">Location</span>
                             <input
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                                 onFocus={() => setIsLocationOpen(true)}
+                                onKeyDown={(e) => {
+                                    if (!isLocationOpen) return;
+                                    if (e.key === "ArrowDown") {
+                                        e.preventDefault();
+                                        setActiveLocationIndex((prev) => Math.min(prev + 1, allDestinations.length - 1));
+                                    }
+                                    if (e.key === "ArrowUp") {
+                                        e.preventDefault();
+                                        setActiveLocationIndex((prev) => Math.max(prev - 1, 0));
+                                    }
+                                    if (e.key === "Enter" && activeLocationIndex >= 0) {
+                                        e.preventDefault();
+                                        selectLocation(allDestinations[activeLocationIndex]);
+                                    }
+                                    if (e.key === "Escape") {
+                                        e.preventDefault();
+                                        setIsLocationOpen(false);
+                                    }
+                                }}
                                 placeholder="Where are you going?"
                                 className="relative lg:left-8 text-[16px] text-[#656F81] outline-none bg-transparent"
+                                aria-expanded={isLocationOpen}
+                                aria-controls="desktop-location-listbox"
                             />
                             {/* Location dropdown */}
                             {isLocationOpen && (
-                                <div className="absolute top-[80px] left-0 w-[360px] bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] p-4 z-[100]">
+                                <div
+                                    className="absolute top-[80px] left-0 w-[360px] bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] p-4 z-[100]"
+                                    role="listbox"
+                                    id="desktop-location-listbox"
+                                >
                                     {/* Recent Searches */}
                                     <div className="mb-4">
                                         <p className="text-[14px] font-medium text-[#2B3037] mb-2">
                                             Recent searches
                                         </p>
                                         <ul className="space-y-1">
-                                            {recentSearches.map((item) => (
+                                            {recentSearches.map((item, index) => (
                                                 <li
                                                     key={item}
-                                                    onClick={() => {
-                                                        setLocation(item);
-                                                        setIsLocationOpen(false);
-                                                    }}
-                                                    className="cursor-pointer px-3 py-2 rounded-lg text-[16px] text-[#383E48] hover:bg-[#E8EFFC]"
+                                                    onClick={() => selectLocation(item)}
+                                                    onMouseEnter={() => setActiveLocationIndex(index)}
+                                                    role="option"
+                                                    aria-selected={activeLocationIndex === index}
+                                                    className={`cursor-pointer px-3 py-2 rounded-lg text-[16px] text-[#383E48] hover:bg-[#E8EFFC] ${activeLocationIndex === index ? 'bg-[#E8EFFC]' : ''}`}
                                                 >
                                                     {item}
                                                 </li>
@@ -135,14 +189,14 @@ export default function SearchBoxPrototype() {
                                             Suggested destinations
                                         </p>
                                         <ul className="space-y-1">
-                                            {suggestedDestinations.map((item) => (
+                                            {suggestedDestinations.map((item, index) => (
                                                 <li
                                                     key={item}
-                                                    onClick={() => {
-                                                        setLocation(item);
-                                                        setIsLocationOpen(false);
-                                                    }}
-                                                    className="cursor-pointer px-3 py-2 rounded-lg text-[16px] text-[#383E48] hover:bg-[#E8EFFC]"
+                                                    onClick={() => selectLocation(item)}
+                                                    onMouseEnter={() => setActiveLocationIndex(recentSearches.length + index)}
+                                                    role="option"
+                                                    aria-selected={activeLocationIndex === recentSearches.length + index}
+                                                    className={`cursor-pointer px-3 py-2 rounded-lg text-[16px] text-[#383E48] hover:bg-[#E8EFFC] ${activeLocationIndex === recentSearches.length + index ? 'bg-[#E8EFFC]' : ''}`}
                                                 >
                                                     {item}
                                                 </li>
@@ -182,7 +236,7 @@ export default function SearchBoxPrototype() {
                         >
                             <span className="relative lg:left-8 text-[18px] font-medium">Rooms and Guests</span>
                             <div className="relative lg:left-8 flex items-center justify-between text-[16px]">
-                                <span>
+                                <span aria-live="polite">
                                     {(adults + children + pets) === 0
                                         ? "Add rooms"
                                         : `${rooms > 0 ? `${rooms} room${rooms > 1 ? "s" : ""} · ` : ""}${adults + children} guest${adults + children > 1 ? "s" : ""}${pets > 0 ? ` · ${pets} pet${pets > 1 ? "s" : ""}` : ""}`}
@@ -225,7 +279,7 @@ export default function SearchBoxPrototype() {
                                                 <p className="font-medium">Adults</p>
                                                 <p className="text-sm text-[#656F81]">Age 17+</p>
                                             </div>
-                                            <Counter value={adults} setValue={v => setAdults(Math.max(1, v))} min={1} />
+                                            <Counter value={adults} setValue={v => setAdults(Math.max(1, v))} min={1} variant="desktop" />
                                         </div>
                                         {/* Children */}
                                         <div className="flex w-full items-center py-3">
@@ -242,6 +296,7 @@ export default function SearchBoxPrototype() {
                                                     setChildren(Math.max(0, v));
                                                 }}
                                                 min={0}
+                                                variant="desktop"
                                             />
                                         </div>
                                         {/* Pets */}
@@ -258,6 +313,7 @@ export default function SearchBoxPrototype() {
                                                     setPets(Math.max(0, v));
                                                 }}
                                                 min={0}
+                                                variant="desktop"
                                             />
                                         </div>
                                     </div>
@@ -402,7 +458,7 @@ export default function SearchBoxPrototype() {
                                             <p className="font-medium text-base text-gray-800">Adults</p>
                                             <p className="text-sm text-gray-500">Ages 13 or above</p>
                                         </div>
-                                        <MobileCounter value={adults} setValue={setAdults} min={1} />
+                                        <Counter value={adults} setValue={setAdults} min={1} variant="mobile" />
                                     </div>
                                     <div className="w-full h-px bg-gray-100" />
                                     <div className="flex justify-between items-center">
@@ -410,7 +466,7 @@ export default function SearchBoxPrototype() {
                                             <p className="font-medium text-base text-gray-800">Children</p>
                                             <p className="text-sm text-gray-500">Ages 2–12</p>
                                         </div>
-                                        <MobileCounter value={children} setValue={setChildren} />
+                                        <Counter value={children} setValue={setChildren} variant="mobile" />
                                     </div>
                                     <div className="w-full h-px bg-gray-100" />
                                     <div className="flex justify-between items-center">
@@ -418,7 +474,7 @@ export default function SearchBoxPrototype() {
                                             <p className="font-medium text-base text-gray-800">Pets</p>
                                             <p className="text-sm text-gray-500">Service animals</p>
                                         </div>
-                                        <MobileCounter value={pets} setValue={setPets} />
+                                        <Counter value={pets} setValue={setPets} variant="mobile" />
                                     </div>
                                 </div>
                             )}
