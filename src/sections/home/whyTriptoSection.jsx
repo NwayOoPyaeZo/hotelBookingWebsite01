@@ -1,6 +1,6 @@
 const WhyTriptoSection = () => {
     return (
-        <section className="w-full h-[90vh] lg:h-[50vh] flex justify-center h-100">
+        <section className="w-full h-[90vh] lg:h-[430px] flex justify-center h-100">
             <div className="relative top-30 lg:top-0 w-full lg:w-[1232px] h-[302px] flex flex-col items-center gap-20 ">
                 <h2
                     className="w-full h-[48px] text-center font-['Roboto'] font-semibold text-[36px] leading-[46px] tracking-normal align-middle">

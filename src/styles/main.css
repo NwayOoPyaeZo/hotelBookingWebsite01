@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+:root {
+    --neutral-800: #1F2226;
+    --neutral-700: #2B3037;
+    --neutral-600: #383E48;
+    --neutral-300: #8B94A4;
+    --primary-blue: #0057FF;
+    --primary-dark: #0046CC;
+    --amber-star: #FAC91E;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;

@@ -1,18 +1,23 @@
 import LanguageCurrency from "../components/shared/LanguageCurrency";
 
 
-const Navbar = () => {
+const Navbar = ({ onLogoClick }) => {
     return (
         <section className="w-full min-h-[96px] flex items-center justify-center bg-white relative z-100">
             <nav className="w-full max-w-[1232px] h-[48px] flex items-center justify-between px-6 mx-auto">
                 {/* Logo */}
-                <a href="/" className="relative left-5 lg:left-0 flex items-center">
+                <button
+                    type="button"
+                    onClick={onLogoClick}
+                    className="relative left-5 lg:left-0 flex items-center"
+                    aria-label="Go to home"
+                >
                     <img
                         src="/assets/elements/Logo.svg"
                         alt="Hotel Booking Logo"
                         className="h-8"
                     />
-                </a>
+                </button>
 
                 {/* Right links */}
                 <div className="relative right-5 lg:right-0 w-[183px] max-h-[48px] flex items-center justify-between gap-4">
