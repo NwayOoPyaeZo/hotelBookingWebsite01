@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import PropertyTypeBar from "../components/propertyTypeBar";
-import SearchBoxPrototype from "../components/shared/searchBoxPrototype";
+import PropertyTypeBar from "../../components/propertyTypeBar";
+import SearchBoxPrototype from "../../components/shared/searchBoxPrototype";
 import heroPic01 from "/assets/images/hero-banner/hero-pic-01.jpg";
 import heroPic02 from "/assets/images/hero-banner/hero-pic-02.jpg";
 import heroPic03 from "/assets/images/hero-banner/hero-pic-03.jpg";

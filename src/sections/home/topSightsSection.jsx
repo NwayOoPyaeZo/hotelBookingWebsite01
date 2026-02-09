@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getCountryFlag } from "../services/locale";
+import { getCountryFlag } from "../../services/locale";
 
 const initialSightsData = [
   {

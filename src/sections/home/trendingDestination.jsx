@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { chips, trendingCards } from "../constants/trendingData";
-import { FlowerIcon, SunIcon, LeafIcon, SnowIcon } from "../components/Icons";
+import { chips, trendingCards } from "../../constants/trendingData";
+import { FlowerIcon, SunIcon, LeafIcon, SnowIcon } from "../../components/Icons";
 
 const iconMap = {
   spring: <FlowerIcon />,
