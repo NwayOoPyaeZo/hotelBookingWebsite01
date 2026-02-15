@@ -2,6 +2,8 @@ import { imagePath } from "../lib/image";
 
 export const hotelDetailsRegistry = {
     1: {
+        category: "Apartment",
+        propertyType: "Aparthotel",
         overview: {
             hotelSize: {
                 rooms: 26,
@@ -120,6 +122,8 @@ export const hotelDetailsRegistry = {
         ]
     },
     2: {
+        category: "Apartment",
+        propertyType: "Serviced Apartments",
         overview: {
             hotelSize: {
                 rooms: 34,
@@ -240,6 +244,8 @@ export const hotelDetailsRegistry = {
         ]
     },
     3: {
+        category: "Hotel",
+        propertyType: "Luxury Suites",
         overview: {
             hotelSize: {
                 rooms: 45,
@@ -363,10 +369,12 @@ export const hotelDetailsRegistry = {
         ]
     },
     4: {
+        category: "House",
+        propertyType: "Loft Apartment",
         overview: {
             hotelSize: {
-                rooms: 18,
-                floors: 3
+                rooms: 1,
+                floors: 1
             },
             subheading: "Breezy loft-style living near the beach",
             description:
@@ -424,32 +432,18 @@ export const hotelDetailsRegistry = {
         },
         rooms: [
             {
-                id: "sugar-loft-standard",
-                name: "Loft Studio",
-                guests: 2,
-                size: "26 m²",
-                view: "Garden view",
-                features: ["Mini kitchen", "Private terrace", "Ceiling fan"],
-                pricing: {
-                    pricePerNight: 95,
-                    original: 110,
-                    discounted: 85
-                },
-                availability: { available: true }
-            },
-            {
-                id: "sugar-loft-deluxe",
-                name: "Garden Loft",
+                id: "sugar-loft-entire",
+                name: "Entire Loft Studio",
                 guests: 3,
                 size: "34 m²",
-                view: "Pool view",
-                features: ["Outdoor patio", "Kitchenette", "Work desk"],
+                view: "Garden & Pool view",
+                features: ["Private Patio", "Kitchenette", "Work desk"],
                 pricing: {
                     pricePerNight: 120,
                     original: 120,
                     discounted: 102
                 },
-                availability: { available: false }
+                availability: { available: true }
             }
         ],
         reviews: {
@@ -481,6 +475,8 @@ export const hotelDetailsRegistry = {
         ]
     },
     5: {
+        category: "Hotel",
+        propertyType: "Heritage Villa",
         overview: {
             hotelSize: {
                 rooms: 22,
@@ -601,9 +597,11 @@ export const hotelDetailsRegistry = {
         ]
     },
     6: {
+        category: "House",
+        propertyType: "Traditional Machiya",
         overview: {
             hotelSize: {
-                rooms: 12,
+                rooms: 1,
                 floors: 2
             },
             subheading: "Traditional Machiya stays with modern comforts",
@@ -666,26 +664,12 @@ export const hotelDetailsRegistry = {
         },
         rooms: [
             {
-                id: "machiya-classic",
-                name: "Traditional Machiya",
-                guests: 2,
-                size: "30 m²",
-                view: "Garden view",
-                features: ["Tatami room", "Garden courtyard", "Tea set"],
-                pricing: {
-                    pricePerNight: 320,
-                    original: 350,
-                    discounted: 300
-                },
-                availability: { available: true }
-            },
-            {
-                id: "machiya-family",
-                name: "Machiya Family Suite",
+                id: "machiya-entire-house",
+                name: "Entire Traditional Townhouse",
                 guests: 4,
                 size: "54 m²",
-                view: "Courtyard view",
-                features: ["Two bedrooms", "Kitchenette", "Outdoor bath"],
+                view: "Private Tsuboniwa Garden",
+                features: ["Tatami Rooms", "Wooden Bath", "Matcha Tea Set"],
                 pricing: {
                     pricePerNight: 410,
                     original: 410,

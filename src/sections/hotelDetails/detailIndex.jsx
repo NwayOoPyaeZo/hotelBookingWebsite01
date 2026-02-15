@@ -5,6 +5,7 @@ import DetailHeader from "./detailHeader";
 import PhotoGrid from "../../components/hotel/photoGrid";
 import DetailMain from "./detailMain";
 import BookingSidebar from "../../components/hotel/bookingSidebar";
+import DetailRoom from "./detailRooms";
 
 export default function DetailIndex({ hotelId }) {
     const [hotel, setHotel] = useState(null);
@@ -43,7 +44,7 @@ export default function DetailIndex({ hotelId }) {
             <DetailHeader hotel={hotel} />                   
 
             {/* 2. Photo Gallery Section */}
-            <div className="w-full max-w-[1232px] lg:px-0">
+            <div className="w-full max-w-[1232px] mx-auto mt-8 px-4 lg:px-0">
                 <PhotoGrid gallery={hotel.gallery} hotelName={hotel.name} />
             </div>
 
@@ -57,6 +58,11 @@ export default function DetailIndex({ hotelId }) {
                 <div className="w-full lg:max-w-[730px]">
                     <DetailMain hotel={hotel} />
                 </div>
+            </section>
+
+            {/* 4. ROOMS SECTION (FULL WIDTH) */}
+            <section className="w-full max-w-[1232px] mx-auto px-4 lg:px-0 mt-16">
+                <DetailRoom hotelId={hotelId} />
             </section>
         </main>
     );
