@@ -38,26 +38,25 @@ export default function DetailIndex({ hotelId }) {
     if (!hotel) return <div className="p-10 text-center font-roboto">Loading...</div>;
 
     return (
-        <main className="flex flex-col items-center">
+        <main className="flex w-full flex-col items-center">
             {/* 1. Header & Navigation */}
             <DetailHeader hotel={hotel} />                   
 
-            {/* 2. Photo Gallery Section - NOW CENTERED */}
-            <div className="max-w-[1232px] mx-auto mt-8 mb-12 px-4 lg:px-0">
+            {/* 2. Photo Gallery Section */}
+            <div className="w-full max-w-[1232px] lg:px-0">
                 <PhotoGrid gallery={hotel.gallery} hotelName={hotel.name} />
             </div>
 
             {/* 3. TWO-COLUMN LAYOUT SECTION */}
-            <section className="max-w-[1232px] mx-auto flex flex-col lg:flex-row gap-[104px] items-start relative px-4 lg:px-0">
-                
-                {/* Left Column: Handled by DetailMain (730px) */}
-                <DetailMain hotel={hotel} />
-
-                {/* Right Column: Sticky Sidebar (400px) */}
-                <aside className="hidden lg:block w-[400px] sticky top-24 self-start">
+            <section className="w-full max-w-[1232px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-[104px] items-start relative px-4 lg:px-0 mt-12 lg:mt-16">
+                <aside className="w-full lg:w-[400px] lg:sticky lg:top-24 order-first lg:order-last">
                     <BookingSidebar hotel={hotel} />
                 </aside>
-                
+
+                {/* Left Column: Handled by DetailMain */}
+                <div className="w-full lg:max-w-[730px]">
+                    <DetailMain hotel={hotel} />
+                </div>
             </section>
         </main>
     );
