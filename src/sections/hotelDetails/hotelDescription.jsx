@@ -30,7 +30,7 @@ export default function hotelDescription({ hotel }) {
             </div>
 
             <div className="hidden lg:block">
-                <div className="bg-white border border-gray-100 rounded-[32px] p-4 shadow-sm flex items-center gap-4">
+                <div className="bg-white border border-gray-100 rounded-[32px] gap-5 shadow-sm flex items-center gap-4">
                     <div className="w-20 h-20 rounded-full overflow-hidden">
                         <img src="/assets/images/user.jpg" alt="Lisa Doberman" className="w-full h-full object-cover" />
                     </div>

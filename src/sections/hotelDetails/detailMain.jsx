@@ -130,7 +130,7 @@ export default function DetailMain({ hotel }) {
         <div className="flex flex-col gap-16 w-full max-w-[730px]">
 
             {/* Description Section */}
-            <section className="flex flex-col gap-4 w-[728px] font-roboto">
+            <section className="flex flex-col gap-4 w-full max-w-[728px] font-roboto">
                 <h2 className="text-[28px] font-semibold leading-[34px] text-[#1F2226]">
                     Description
                 </h2>
@@ -195,7 +195,7 @@ export default function DetailMain({ hotel }) {
             </section>
 
             {/* Location Section */}
-            <section className="flex flex-col gap-6 w-[730px]">
+            <section className="flex flex-col gap-6 w-full max-w-[730px]">
                 <div className="flex flex-col gap-2">
                     <h2 className="font-roboto text-[28px] font-semibold text-[#1F2226]">
                         Location
@@ -208,7 +208,7 @@ export default function DetailMain({ hotel }) {
                 {/* Clickable Map Preview */}
                 <div
                     onClick={() => setIsMapModalOpen(true)}
-                    className="w-[730px] h-[421px] rounded-[16px] overflow-hidden border border-[#DDDFE3] cursor-pointer relative group"
+                    className="w-full max-w-[730px] h-[260px] sm:h-[421px] rounded-[16px] overflow-hidden border border-[#DDDFE3] cursor-pointer relative group"
                 >
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10" />
                     <MapContainer
@@ -232,46 +232,57 @@ export default function DetailMain({ hotel }) {
 
             {/* --- AMENITIES MODAL --- */}
             {isAmenitiesModalOpen && (
-                <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-in fade-in duration-300">
+                /* 1. Modal Overlay */
+                <div className="fixed inset-0 z-[2000] bg-white md:bg-black/50 md:backdrop-blur-sm md:flex md:items-center md:justify-center animate-in fade-in duration-300">
 
-                    {/* Main Card*/}
-                    <div className="bg-white rounded-[32px] shadow-2xl flex flex-col overflow-hidden w-full max-w-[800px] h-[600px]">
+                    <div className="flex flex-col w-full h-full md:h-[600px] md:max-w-[800px] md:rounded-[32px] md:shadow-2xl bg-white overflow-hidden">
 
-                        {/* Header Frame */}
-                        <div className="flex flex-row items-center justify-between border-b border-gray-100 h-24 shrink-0">
-                            <h3 className="relative left-3 text-3xl font-semibold font-roboto text-[#1F2226]">All Amenities</h3>
+                        <div className="flex items-center justify-between px-6 py-4 md:h-24 border-b border-gray-100 shrink-0">
+                            <h3 className="text-xl md:text-3xl font-semibold font-roboto text-[#1F2226]">
+                                All Amenities
+                            </h3>
                             <button
                                 onClick={() => setIsAmenitiesModalOpen(false)}
-                                className="flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors h-14 w-14"
+                                className="flex items-center justify-center hover:bg-gray-100 rounded-full transition-all h-10 w-10 md:h-14 md:w-14"
                             >
-                                <LucideIcons.X size={32} className="text-[#1F2226]" />
+                                <LucideIcons.X size={24} className="md:size-32 text-[#1F2226]" />
                             </button>
                         </div>
 
-                        {/* Content Area */}
-                        <div className="flex overflow-y-auto justify-center items-center">
+                        {/* 4. Content Area: Scrollable grid */}
+                        <div className="flex-1 overflow-y-auto p-6 md:p-12 no-scrollbar">
+                            <div className="flex flex-col items-center w-full">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 md:gap-y-12 gap-x-6 md:gap-x-24 w-full max-w-[600px] md:max-w-none">
+                                    {fullAmenities.map((amenity, index) => (
+                                        <div
+                                            key={`${amenity.label}-${index}`}
+                                            className="flex flex-row items-center gap-4 md:gap-6 w-full"
+                                        >
+                                            <div className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 shrink-0">
+                                                <DynamicIcon
+                                                    name={amenity.icon}
+                                                    size={24}
+                                                    strokeWidth={1.5}
+                                                    className="md:size-[32px] text-[#2B3037]"
+                                                />
+                                            </div>
 
-                            <div className="grid grid-cols-2 gap-y-12 gap-x-[160px] justify-items-start">
-                                {fullAmenities.map((amenity, index) => (
-                                    <div
-                                        key={`${amenity.label}-${index}`}
-                                        className="flex flex-row items-center gap-6 w-full"
-                                    >
-                                        <div className="flex items-center justify-center w-10 h-10 shrink-0">
-                                            <DynamicIcon
-                                                name={amenity.icon}
-                                                size={32}
-                                                strokeWidth={1.5}
-                                                className="text-[#2B3037]"
-                                            />
+                                            <span className="font-roboto text-[#1F2226] text-base md:text-xl font-medium whitespace-nowrap">
+                                                {amenity.label}
+                                            </span>
                                         </div>
-
-                                        <span className="font-roboto text-[#1F2226] text-xl font-medium whitespace-nowrap leading-none">
-                                            {amenity.label}
-                                        </span>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
+                        </div>
+
+                        <div className="p-4 border-t border-gray-100 md:hidden shrink-0">
+                            <button
+                                onClick={() => setIsAmenitiesModalOpen(false)}
+                                className="w-full py-4 bg-[#0057FF] text-white rounded-xl font-bold font-roboto"
+                            >
+                                Close
+                            </button>
                         </div>
                     </div>
                 </div>

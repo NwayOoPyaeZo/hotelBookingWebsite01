@@ -14,7 +14,7 @@ export default function DetailsNavBar() {
 
     return (
         /* The inner NavBar - Frame matching width 1232px */
-        <nav className="flex flex-row items-center gap-[24px] h-[58px]">
+        <nav className="flex flex-row items-center gap-4 sm:gap-[24px] h-[58px] w-full overflow-x-auto no-scrollbar">
             {tabs.map((tab) => {
                 const isActive = activeTab === tab.name;
                 
