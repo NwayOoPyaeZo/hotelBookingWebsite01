@@ -53,7 +53,7 @@ export default function HotelPolicies({ policies }) {
   ];
 
   return (
-    <section className="w-full lg:h-auto md:h-[700px] h-[800px] flex flex-col justify-center items-center font-roboto px-4 lg:px-0 py-20 bg-transparent">
+    <section className="w-full md:h-[700px] h-[800px] flex flex-col justify-center items-center font-roboto px-4 lg:px-0 py-20 bg-transparent">
       
       <div className="w-full max-w-[1232px] flex flex-col gap-8">
         
