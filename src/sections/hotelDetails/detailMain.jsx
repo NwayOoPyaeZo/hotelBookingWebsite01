@@ -137,12 +137,12 @@ export default function DetailMain({ hotel }) {
 
                 <div className="flex flex-col gap-2">
                     <p className="text-base leading-6 text-[#1F2226]">
-                        <span className="font-bold">Hotel size</span> {hotel.overview.hotelSize.rooms} rooms, Arranged over {hotel.overview.hotelSize.floors} floors
+                        <span className="font-bold">Hotel size</span> {hotel?.overview?.hotelSize?.rooms ?? 0} rooms, Arranged over {hotel?.overview?.hotelSize?.floors ?? 0} floors
                     </p>
 
                     <div className="flex flex-col gap-1">
                         <p className="text-base font-bold leading-6 text-[#1F2226]">
-                            {hotel.overview.subheading}
+                            {hotel?.overview?.subheading ?? ""}
                         </p>
 
                         <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-[1000px]' : 'max-h-[72px]'}`}>
@@ -154,7 +154,7 @@ export default function DetailMain({ hotel }) {
                                     </div>
 
                                     <span className={`flex-1 ${!isExpanded ? "line-clamp-3" : ""}`}>
-                                        {hotel.overview.description}
+                                        {hotel?.overview?.description ?? ""}
                                     </span>
                                 </li>
                             </ul>

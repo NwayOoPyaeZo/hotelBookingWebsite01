@@ -1,4 +1,4 @@
-import { imagePath } from "../lib/image";
+import { imagePath } from "../lib/image.js";
 
 export const hotelDetailsRegistry = {
     1: {
