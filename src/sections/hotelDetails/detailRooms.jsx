@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import RoomCard from "../../components/hotel/roomCard";
-import { roomDetailsRegistry } from "../../constants/roomDetails";
 
-export default function DetailRooms({ hotelId }) {
+export default function DetailRooms({ roomList = [] }) {
   const [activeFilter, setActiveFilter] = useState("all");
-
-  const rooms = roomDetailsRegistry[hotelId] || [];
 
   const filters = [
     { key: "all", label: "All Rooms" },
@@ -16,8 +13,8 @@ export default function DetailRooms({ hotelId }) {
 
   const filteredRooms =
     activeFilter === "all"
-      ? rooms
-      : rooms.filter((room) => Number(room.beds) === Number(activeFilter));
+      ? roomList
+      : roomList.filter((room) => Number(room.beds) === Number(activeFilter));
 
   return (
     <section className="flex flex-col items-start gap-[29px] w-full max-w-[1234px] font-roboto mt-16">
@@ -26,12 +23,12 @@ export default function DetailRooms({ hotelId }) {
       </h2>
 
       {/* Chips Container */}
-      <div className="flex flex-row items-center gap-4 h-12">
+      <div className="flex flex-row items-center gap-4 h-12 w-full overflow-x-auto no-scrollbar pb-2">
         {filters.map((filter) => (
           <button
             key={filter.key}
             onClick={() => setActiveFilter(filter.key)}
-            className={`h-full w-[7rem] rounded-[24px] border transition-all duration-300 ${
+            className={`h-full min-w-[7rem] shrink-0 rounded-[24px] border transition-all duration-300 ${
               activeFilter === filter.key
                 ? "bg-[#121316] text-white border-[#121316]"
                 : "bg-white text-[#121316] border-[#121316] hover:bg-gray-50"
@@ -46,7 +43,7 @@ export default function DetailRooms({ hotelId }) {
       <div className="flex flex-col gap-8 w-full">
         {filteredRooms.length > 0 ? (
           filteredRooms.map((room) => (
-            <div key={room.id} className="w-full h-[300px] flex items-center justify-center">
+            <div key={room.id} className="w-full h-auto flex items-center justify-center">
               <RoomCard room={room} />
             </div>
           ))
