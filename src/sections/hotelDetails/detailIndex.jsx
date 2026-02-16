@@ -5,6 +5,7 @@ import PhotoGrid from "../../components/hotel/photoGrid";
 import DetailMain from "./detailMain";
 import BookingSidebar from "../../components/hotel/bookingSidebar";
 import DetailRoom from "./detailRooms";
+import HotelPolicies from "./hotelPolicies";
 import DetailReviews from "./detailReviews";
 
 export default function DetailIndex({ hotelId }) {
@@ -201,6 +202,11 @@ export default function DetailIndex({ hotelId }) {
             {/* 5. REVIEWS SECTION (FULL WIDTH) */}
             <section className="w-full max-w-[1232px] mx-auto px-4 lg:px-0 mt-16 mb-24">
                 <DetailReviews reviews={hotel.reviews} />
+            </section>
+
+            {/* 6. POLICIES SECTION (FULL WIDTH) */}
+            <section className="w-full max-w-[1232px] mx-auto px-4 lg:px-0 mt-16 mb-24">
+                <HotelPolicies policies={hotel.policies} />
             </section>
         </main>
     );
