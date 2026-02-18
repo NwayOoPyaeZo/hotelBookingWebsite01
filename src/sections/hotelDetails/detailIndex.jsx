@@ -244,7 +244,7 @@ export default function DetailIndex({ hotelId }) {
     }
 
     return (
-        <main className="flex w-full flex-col items-center">
+        <main className="flex w-full flex-col gap-y-5 items-center">
             {/* 1. Header & Navigation */}
             <DetailHeader hotel={hotel} />                   
 
