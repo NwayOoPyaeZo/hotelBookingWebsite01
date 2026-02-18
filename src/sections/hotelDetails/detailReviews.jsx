@@ -31,8 +31,7 @@ export default function DetailReviews({ reviews }) {
         </div>
       </div>
 
-      {/* 2. Dashboard Section (Kept for layout) */}
-      {/* ... Your Rating Dashboard code ... */}
+      {/* 2. Dashboard Section */}
 
       {/* 3. Review Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">

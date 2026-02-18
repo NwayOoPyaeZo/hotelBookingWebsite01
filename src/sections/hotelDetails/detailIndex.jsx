@@ -7,10 +7,14 @@ import BookingSidebar from "../../components/hotel/bookingSidebar";
 import DetailRoom from "./detailRooms";
 import HotelPolicies from "./hotelPolicies";
 import DetailReviews from "./detailReviews";
+import SuggestionSection from "../suggestionSection";
+import { SAMPLE_HOTELS } from "../../constants/sampleHotels";
 
 export default function DetailIndex({ hotelId }) {
     const [hotel, setHotel] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [activities, setActivities] = useState([]);
+    const [similarHotels, setSimilarHotels] = useState([]);
 
     useEffect(() => {
         let isActive = true;
@@ -40,6 +44,8 @@ export default function DetailIndex({ hotelId }) {
                 console.error("❌ Fetch error:", error);
                 if (isActive) {
                     setHotel(null);
+                    setActivities([]);
+                    setSimilarHotels([]);
                     setIsLoading(false);
                 }
                 return;
@@ -47,6 +53,71 @@ export default function DetailIndex({ hotelId }) {
 
             if (isActive) {
                 console.log("✅ Fetched hotel data:", data);
+
+                let targetCity = data?.city;
+                if (!targetCity && data?.location) {
+                    try {
+                        const locObj = typeof data.location === "string"
+                            ? JSON.parse(data.location)
+                            : data.location;
+                        targetCity = locObj?.city;
+                    } catch (parseError) {
+                        console.error("Error parsing hotel location:", parseError);
+                    }
+                }
+
+                if (targetCity) {
+                    // 1. Fetch Activities
+                    const { data: actsData } = await supabase
+                        .from("activities")
+                        .select("*")
+                        .eq("city", targetCity)
+                        .limit(7);
+
+                    // 2. Fetch Similar Hotels 
+                    const { data: similarByCity, error: similarByCityError } = await supabase
+                        .from("hotels")
+                        .select("*")
+                        .eq("city", targetCity)
+                        .neq("id", normalizedHotelId)
+                        .limit(5);
+
+                    if (similarByCityError) {
+                        console.error("❌ Similar hotels (city) fetch error:", similarByCityError);
+                    }
+
+                    let similarData = similarByCity || [];
+
+                    if (similarData.length === 0) {
+                        const { data: similarByLocation, error: similarByLocationError } = await supabase
+                            .from("hotels")
+                            .select("*")
+                            .ilike("location", `%${targetCity}%`)
+                            .neq("id", normalizedHotelId)
+                            .limit(5);
+
+                        if (similarByLocationError) {
+                            console.error("❌ Similar hotels (location) fetch error:", similarByLocationError);
+                        }
+
+                        similarData = similarByLocation || [];
+                    }
+
+                    if (similarData.length === 0) {
+                        similarData = SAMPLE_HOTELS.filter(
+                            (candidate) => Number(candidate.hotel_id) === Number(normalizedHotelId)
+                        );
+                    }
+
+                    setActivities(actsData || []);
+                    setSimilarHotels(similarData);
+                } else {
+                    setActivities([]);
+                    const fallbackSimilarHotels = SAMPLE_HOTELS.filter(
+                        (candidate) => Number(candidate.hotel_id) === Number(normalizedHotelId)
+                    );
+                    setSimilarHotels(fallbackSimilarHotels);
+                }
 
                 // 1. Process Gallery
                 const gallery = Array.isArray(data?.hotel_images)
@@ -56,16 +127,16 @@ export default function DetailIndex({ hotelId }) {
                           .filter(Boolean)
                     : [];
 
-                // 2. Process Rooms (Map database columns to component props)
+                // 2. Process Rooms
                 const roomList = Array.isArray(data?.rooms)
                     ? data.rooms.map((room) => ({
                           ...room,
-                          rating: room.rating ?? data.rating ?? 5.0,  // Map hotel rating to room
-                          reviewCount: room.review_count ?? 0,        // Map review count
-                          status: room.status ?? "Excellent",         // Map status
-                          view: room.view_type,                       // Map 'view_type' to 'view'
-                          bedType: room.bed_type,                     // Map 'bed_type' to 'bedType'
-                          unitsLeft: room.units_left,                 // Map 'units_left' to 'unitsLeft'
+                          rating: room.rating ?? data.rating ?? 5.0,
+                          reviewCount: room.review_count ?? 0,
+                          status: room.status ?? "Excellent",
+                          view: room.view_type,
+                          bedType: room.bed_type,
+                          unitsLeft: room.units_left,
                           images: Array.isArray(room?.room_images)
                               ? room.room_images.map((image) => image?.image_url).filter(Boolean)
                               : []
@@ -79,7 +150,6 @@ export default function DetailIndex({ hotelId }) {
                 const reviewsArray = Array.isArray(data?.hotel_reviews) ? data.hotel_reviews : [];
                 console.log("📝 Total Reviews fetched:", reviewsArray.length);
                 
-                // Calculate average category ratings from all reviews
                 const avgRatings = reviewsArray.length > 0 ? {
                     amenities: reviewsArray.reduce((sum, r) => sum + (r.amenities_rating || 5.0), 0) / reviewsArray.length,
                     cleanliness: reviewsArray.reduce((sum, r) => sum + (r.cleanliness_rating || 5.0), 0) / reviewsArray.length,
@@ -106,7 +176,7 @@ export default function DetailIndex({ hotelId }) {
                 
                 console.log("📝 Reviews object created with", reviews.comments.length, "comments");
 
-                // 4. Reconstruct overview object for DetailMain compatibility
+                // 4. Reconstruct overview object
                 const overview = {
                     subheading: data.subheading || "Experience luxury and comfort",
                     description: data.description || "",
@@ -116,7 +186,7 @@ export default function DetailIndex({ hotelId }) {
                     }
                 };
 
-                // 5. Add amenities and policies with defaults
+                // 5. Add amenities and policies
                 const amenities = Array.isArray(data?.hotel_amenities) && data.hotel_amenities.length > 0
                     ? {
                         preview: data.hotel_amenities
@@ -146,6 +216,7 @@ export default function DetailIndex({ hotelId }) {
 
                 setHotel({
                     ...data,
+                    city: targetCity,
                     overview,
                     amenities,
                     policies,
@@ -194,20 +265,23 @@ export default function DetailIndex({ hotelId }) {
                 </div>
             </section>
 
-            {/* 4. ROOMS SECTION (FULL WIDTH) */}
+            {/* 4. ROOMS SECTION */}
             <section className="w-full max-w-[1232px] mx-auto px-4 lg:px-0 mt-16">
                 <DetailRoom roomList={hotel?.roomList ?? []} />
             </section>
 
-            {/* 5. REVIEWS SECTION (FULL WIDTH) */}
-            <section className="w-full max-w-[1232px] mx-auto px-4 lg:px-0 mt-16 mb-24">
+            {/* 5. POLICIES SECTION */}
+            <section className="w-full max-w-[1232px] mx-auto px-4 lg:px-0 mt-16">
+                <HotelPolicies policies={hotel.policies} />
+            </section>
+
+            {/* 6. REVIEWS SECTION */}
+            <section className="w-full max-w-[1232px] mx-auto px-4 lg:px-0 mt-16">
                 <DetailReviews reviews={hotel.reviews} />
             </section>
 
-            {/* 6. POLICIES SECTION (FULL WIDTH) */}
-            <section className="w-full max-w-[1232px] mx-auto px-4 lg:px-0 mt-16 mb-24">
-                <HotelPolicies policies={hotel.policies} />
-            </section>
+            {/* 7. SUGGESTIONS SECTION */}
+            <SuggestionSection activities={activities} similarHotels={similarHotels} hotel={hotel} />
         </main>
     );
 }
