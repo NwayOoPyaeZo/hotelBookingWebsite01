@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, ChevronDown, Minus, Plus, X } from "lucide-react";
 
-/* REFINED COUNTER: Clean, rounded-full style to match high-fidelity inputs */
 function Counter({ value, onChange, min = 0 }) {
     return (
         <div className="flex items-center gap-4 bg-[#F9FAFB] rounded-full border border-[#E8ECEF] h-10 px-1">
@@ -74,7 +73,7 @@ export default function BookingSidebar({ hotel }) {
                         </div>
                     </div>
 
-                    {/* Bottom Row: Guest Selection with DROPDOWN FIX */}
+                    {/* Bottom Row: Guest Selection with DROPDOWN */}
                     <div
                         className="relative flex-1 border-t border-[#E8ECEF] flex items-center justify-center hover:bg-[#F9FAFB] transition-colors cursor-pointer group"
                         onClick={() => setIsGuestOpen((prev) => !prev)}
@@ -87,7 +86,7 @@ export default function BookingSidebar({ hotel }) {
                             </div>
                         </div>
 
-                        {/* DROPDOWN: Fixed Inset Stage */}
+                        {/* DROPDOWN */}
                         {isGuestOpen && (
                             <div
                                 className="absolute top-[105%] left-0 w-full bg-white rounded-[24px] border border-[#E8ECEF] shadow-[0_24px_48px_rgba(0,0,0,0.16)] flex flex-col items-center justify-center py-6 z-30 animate-in fade-in slide-in-from-top-2"
